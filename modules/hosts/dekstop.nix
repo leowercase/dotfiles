@@ -18,5 +18,4 @@
       description = "Leo";
       extraGroups = [ "wheel" ];
     };
-    custom.admin = "leo";
   }
