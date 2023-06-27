@@ -12,6 +12,6 @@
     };
 
     config.system.activationScripts.chown_config_to_admin.text = ''
-      chown ${cfg}: /etc/nixos
+      chown -R ${cfg} /etc/nixos
     '';
   }
