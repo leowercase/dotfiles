@@ -13,11 +13,11 @@
       };
       audio = "pipewire";
       graphical = true;
+      admin = "leo";
     };
     users.users.leo = {
       isNormalUser = true;
       description = "Leo";
       extraGroups = [ "wheel" ];
     };
-    custom.admin = "leo";
   }
