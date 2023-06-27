@@ -12,6 +12,7 @@
         wifi = "iwd";
       };
       audio = "pipewire";
+      graphical = true;
     };
     users.users.leo = {
       isNormalUser = true;
