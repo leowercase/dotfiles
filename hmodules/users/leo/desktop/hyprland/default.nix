@@ -105,8 +105,9 @@
       };
 
       home.packages = with pkgs; [
-        flake.hyprland-contrib.packages.${system}.grimblast
+	kitty
         rofi-wayland
+        flake.hyprland-contrib.packages.${system}.grimblast
       ];
 
       leo.fonts.enable = true;
