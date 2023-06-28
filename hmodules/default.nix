@@ -1,4 +1,4 @@
-{ username, myLib, ... }:
+{ config, username, myLib, ... }:
   {
     imports = myLib.getModules ./.;
 
@@ -13,4 +13,7 @@
 
     # Let Home Manager install and manage itself
     programs.home-manager.enable = true;
+
+    # Symlink $HOME/.config/home-manager to the flake
+    xdg.configFile."home-manager".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos;
   }
