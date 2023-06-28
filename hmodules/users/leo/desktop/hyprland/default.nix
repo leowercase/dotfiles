@@ -16,15 +16,6 @@
           
           env = XCURSOR_SIZE, 24
 
-          input = {
-              kb_layout = us
-              follow_mouse = 1
-              touchpad {
-                natural_scroll = false
-              }
-              sensitivity = 0
-          }
-
           general {
               gaps_in = 5
               gaps_out = 20

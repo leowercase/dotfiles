@@ -20,4 +20,5 @@
       description = "Leo";
       extraGroups = [ "wheel" ];
     };
+    programs.hyprland.enable = true;
   }

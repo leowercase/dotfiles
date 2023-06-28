@@ -16,8 +16,8 @@
     };
 
     config = mkIf cfg.enable {
-      custom.wayland.enable = true;
-
+      # The `programs.hyprland` NixOS module needs to be enabled as well,
+      # as it manages Hyprland's XDG Desktop Portal, among other things
       wayland.windowManager.hyprland = {
         enable = true;
         inherit (cfg) extraConfig;
