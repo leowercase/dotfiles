@@ -11,10 +11,12 @@
 
     networking.hostName = hostname;
 
+    hardware.enableRedistributableFirmware = mkDefault true;
+
     # ISO 8601 time
     i18n.extraLocaleSettings.LC_TIME = mkDefault "en_DK.UTF-8";
 
-    environment.defaultPackages = mkDefault [ pkgs.nvi ];
-
-    hardware.enableRedistributableFirmware = mkDefault true;
+    # Default programs on all systems
+    environment.defaultPackages = with pkgs; [ nvi git ];
+    environment.variables.EDITOR = mkDefault "nvi";
   }
