@@ -59,11 +59,18 @@
               workspace_swipe = false
           }
 
+	  misc {
+	      vrr = 1
+              disable_splash_rendering = true
+	  }
+
           $mainMod = SUPER
 
           bind = $mainMod, Q, exit
           bind = $mainMod, C, killactive,
           bind = $mainMod, T, togglefloating,
+	  bind = $mainMod, F, fullscreen,
+	  bind = $mainMod SHIFT, F, fakefullscreen,
 
           bind = $mainMod, Return, exec, kitty
           bind = $mainMod, B, exec, qutebrowser
