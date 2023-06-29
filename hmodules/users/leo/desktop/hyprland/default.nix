@@ -10,7 +10,8 @@
 
     config = mkIf cfg.enable {
       custom.wm.hyprland = {
-        enable = true; extraConfig = ''
+        enable = true;
+	extraConfig = ''
           # See https://wiki.hyprland.org/ for information
           
           env = XCURSOR_SIZE, 24
@@ -117,6 +118,10 @@
         rofi-wayland
         flake.hyprland-contrib.packages.${system}.grimblast
       ];
+
+      services.dunst = {
+        enable = true;
+      };
 
       leo.fonts.enable = true;
     };
