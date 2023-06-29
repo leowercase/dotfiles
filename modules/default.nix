@@ -18,5 +18,5 @@
 
     # Default programs on all systems
     environment.defaultPackages = with pkgs; [ nvi git ];
-    environment.variables.EDITOR = mkOverride 999 "nvi";
+    environment.variables.EDITOR = mkOverride 999 "vi";
   }
