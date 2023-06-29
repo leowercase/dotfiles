@@ -11,6 +11,8 @@
 
     networking.hostName = hostname;
 
+    nixpkgs.config.allowUnfree = true;
+
     hardware.enableRedistributableFirmware = mkDefault true;
 
     # ISO 8601 time
