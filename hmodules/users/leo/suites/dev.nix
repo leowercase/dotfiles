@@ -15,6 +15,10 @@
 	  git.enable = true;
 	};
       };
-      home.sessionVariables.EDITOR = "nvim";
+
+      home.sessionVariables = {
+        EDITOR = "nvim";
+	VISUAL = "nvim";
+      };
     };
   }

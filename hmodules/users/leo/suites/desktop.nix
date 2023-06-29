@@ -19,5 +19,9 @@
         tutanota-desktop # Email provider
 	discord
       ];
+
+      home.sessionVariables = {
+        BROWSER = "qutebrowser";
+      };
     };
   }
