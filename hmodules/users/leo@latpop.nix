@@ -1,10 +1,8 @@
 { ... }:
   {
-    leo.desktop.hyprland.enable = true;
-
-    leo.programs = {
-      git.enable = true;
-      neovim.enable = true;
-      qutebrowser.enable = true;
+    leo = {
+      desktop.hyprland.enable = true;
+      suites.dev.enable = true;
+      programs.qutebrowser.enable = true;
     };
   }
