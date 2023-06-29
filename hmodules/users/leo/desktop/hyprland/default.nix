@@ -10,8 +10,7 @@
 
     config = mkIf cfg.enable {
       custom.wm.hyprland = {
-        enable = true;
-        extraConfig = ''
+        enable = true; extraConfig = ''
           # See https://wiki.hyprland.org/ for information
           
           env = XCURSOR_SIZE, 24
@@ -72,10 +71,8 @@
 	  bind = $mainMod, F, fullscreen,
 	  bind = $mainMod SHIFT, F, fakefullscreen,
 
-          bind = $mainMod, E, exec, $EDITOR
-          bind = $mainMod, B, exec, $BROWSER
-
           bind = $mainMod, Return, exec, kitty
+          bind = $mainMod, B, exec, qutebrowser
           bind = $mainMod, Slash, exec, rofi -show drun
 	  bind = $mainMod, S, exec, grimblast copy area
 	  bind = $mainMod SHIFT, S, exec, grimblast copy screen
