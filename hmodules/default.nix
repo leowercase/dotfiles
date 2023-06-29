@@ -9,13 +9,14 @@
       homeDirectory = "/home/${username}";
     };
 
-    nixpkgs.config.allowUnfree = true;
-
     # Let Home Manager install and manage itself
     programs.home-manager.enable = true;
 
     # Symlink $HOME/.config/home-manager to the flake
     xdg.configFile."home-manager".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos;
+
+    # Absolutely proprietary
+    nixpkgs.config.allowUnfreePredicate = (_: true);
 
     xdg = {
       enable = true;
