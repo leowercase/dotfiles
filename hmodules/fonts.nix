@@ -1,7 +1,7 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.defaultFonts;
+    cfg = config.custom.fonts;
 
     defaultFonts = {
       serif = "serif";
@@ -11,7 +11,7 @@
     };
   in
   {
-    options.custom.defaultFonts =
+    options.custom.fonts =
       attrsets.mapAttrs
         (name: desc: mkOption {
           type = with types; either (listOf str) str;

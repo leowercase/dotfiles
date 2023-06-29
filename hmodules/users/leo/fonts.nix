@@ -17,7 +17,7 @@
         (nerdfonts.override { fonts = [ "FiraCode" ]; })
       ];
 
-      custom.defaultFonts = {
+      custom.fonts = {
         serif = "Noto Serif";
         sansSerif = "Noto Sans";
         monospace = "FiraCode Nerd Font";
