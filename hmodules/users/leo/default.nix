@@ -7,4 +7,7 @@
       enable = true;
       enableCompletion = true;
     };
+
+    # Editor alias, because I'm lazy
+    home.shellAliases.e = "$EDITOR";
   }
