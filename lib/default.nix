@@ -1,12 +1,11 @@
 { nixpkgs,
   nixpkgs-unstable,
-  nixos-hardware,
   home-manager,
   ... } @ flake:
   let
     myLib =
       with builtins;
-      with nixpkgs-unstable.lib;
+      with nixpkgs.lib;
       {
         # Both variants appear in my modules
         isNixFilePath = filePath:
