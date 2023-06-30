@@ -6,7 +6,7 @@
   let
     myLib =
       with builtins;
-      with nixpkgs.lib;
+      with nixpkgs-unstable.lib;
       {
         # Both variants appear in my modules
         isNixFilePath = filePath:
