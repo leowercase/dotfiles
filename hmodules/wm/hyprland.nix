@@ -20,7 +20,17 @@
       # as it manages Hyprland's XDG Desktop Portal, among other things
       wayland.windowManager.hyprland = {
         enable = true;
-        inherit (cfg) extraConfig;
+        extraConfig = ''
+          env = QT_QPA_PLATFORM, wayland;xcb
+	  env = CLUTTER_BACKEND, wayland
+	  env = SDL_VIDEODRIVER, wayland,x11
+	  env = _JAVA_AWT_NONPARENTING, 1
+	'' ++ cfg.extraConfig;
       };
+
+      home.packages = with pkgs; [
+        libsForQt5.qt5.qtwayland
+	qt6.qtwayland
+      ];
     };
   }
