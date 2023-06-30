@@ -6,3 +6,4 @@ This is my Nix flake for my personal NixOS machine configurations.
 * https://github.com/hlissner/dotfiles
 * https://github.com/davidtwco/veritas
 * https://github.com/jakehamilton/config
+* https://github.com/fufexan/dotfiles
