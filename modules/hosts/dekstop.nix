@@ -20,5 +20,9 @@
        extraGroups = [ "wheel" ];
      };
      programs.hyprland.enable = true;
-     programs.steam.enable = true;
+     programs.steam = {
+       enable = true;
+       remotePlay.openFirewall = true;
+       dedicatedServer.openFirewall = true;
+     };
   }
