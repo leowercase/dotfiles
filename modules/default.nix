@@ -1,4 +1,4 @@
-{ lib, myLib, pkgs, hostname, ... }:
+{ options, lib, myLib, pkgs, hostname, ... }:
   with lib;
   {
     imports = myLib.getModules ./.;
@@ -18,7 +18,7 @@
     # ISO 8601 time
     i18n.extraLocaleSettings.LC_TIME = mkDefault "en_DK.UTF-8";
 
-    # Default programs on all systems
-    environment.defaultPackages = with pkgs; [ nvi git ];
+    environment.defaultPackages = (with pkgs; [ nvi git ])
+      ++ (lists.remove pkgs.nano options.environment.defaultPackages.default);
     environment.variables.EDITOR = mkOverride 999 "vi";
   }
