@@ -1,4 +1,4 @@
-{ config, lib, flake, ... }:
+{ config, lib, pkgs, flake, ... }:
   with lib;
   let
     cfg = config.custom.wm.hyprland;
@@ -25,7 +25,7 @@
 	  env = CLUTTER_BACKEND, wayland
 	  env = SDL_VIDEODRIVER, wayland,x11
 	  env = _JAVA_AWT_NONPARENTING, 1
-	'' ++ cfg.extraConfig;
+	'' + cfg.extraConfig;
       };
 
       home.packages = with pkgs; [
