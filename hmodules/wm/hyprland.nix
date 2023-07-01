@@ -20,6 +20,7 @@
       # as it manages Hyprland's XDG Desktop Portal, among other things
       wayland.windowManager.hyprland = {
         enable = true;
+	recommendedEnvironment = true;
         extraConfig = ''
           env = QT_QPA_PLATFORM, wayland;xcb
 	  env = CLUTTER_BACKEND, wayland
