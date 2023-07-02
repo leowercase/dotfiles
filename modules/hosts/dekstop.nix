@@ -24,9 +24,5 @@
        enable = true;
        remotePlay.openFirewall = true;
        dedicatedServer.openFirewall = true;
-       gamescopeSession = {
-         enable = true;
-	 args = [ "-W 2560" "-H 1440" "-e" ];
-       };
      };
   }
