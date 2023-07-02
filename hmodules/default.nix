@@ -1,4 +1,4 @@
-{ config, lib, username, myLib, ... }:
+{ config, lib, username, myLib, overlays, ... }:
   {
     imports = myLib.getModules ./.;
 
@@ -15,8 +15,10 @@
     # Symlink $HOME/.config/home-manager to the flake
     xdg.configFile."home-manager".source = config.lib.file.mkOutOfStoreSymlink /etc/nixos;
 
-    # Absolutely proprietary
-    nixpkgs.config.allowUnfreePredicate = (_: true);
+    nixpkgs = {
+      config.allowUnfreePredicate = (_: true);
+      overlays = [ overlays ];
+    };
 
     xdg = {
       enable = true;

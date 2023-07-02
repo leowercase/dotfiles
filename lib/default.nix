@@ -49,7 +49,8 @@
             (attrValues (mapAttrs (hostname: cfg:
               let
                 inherit (cfg) system;
-                specialArgs = { inherit flake myLib hostname system; };
+	        overlays = import /${dir}/overlays;
+                specialArgs = { inherit flake myLib hostname system overlays; };
               in
               {
                 nixosConfigurations.${hostname} = nixosSystem {
