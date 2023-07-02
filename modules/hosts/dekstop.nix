@@ -26,7 +26,6 @@
        dedicatedServer.openFirewall = true;
        gamescopeSession = {
          enable = true;
-	 env = { SDL_VIDEODRIVER = "x11"; }; # Games prefer X11
 	 args = [ "-W 2560" "-H 1440" "-e" ];
        };
      };

@@ -24,7 +24,6 @@
         extraConfig = ''
           env = QT_QPA_PLATFORM, wayland;xcb
 	  env = CLUTTER_BACKEND, wayland
-	  env = SDL_VIDEODRIVER, wayland,x11
 	  env = _JAVA_AWT_NONPARENTING, 1
 	'' + cfg.extraConfig;
       };
