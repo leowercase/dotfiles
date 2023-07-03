@@ -1,12 +1,12 @@
-{ config, lib, pkgs, flake, ... }:
+{ config, lib, flake, ... }:
   with lib;
   let
-    cfg = config.custom.wm.hyprland;
+    cfg = config.custom.desktop.hyprland;
   in
   {
     imports = [ flake.hyprland.homeManagerModules.default ];
 
-    options.custom.wm.hyprland = {
+    options.custom.desktop.hyprland = {
       enable = mkEnableOption "Hyprland";
       extraConfig = mkOption {
         type = types.lines;
@@ -16,22 +16,25 @@
     };
 
     config = mkIf cfg.enable {
+      custom.desktop.waylandIntegration = mkDefault true;
+
       # The `programs.hyprland` NixOS module needs to be enabled as well,
       # as it manages Hyprland's XDG Desktop Portal, among other things
       wayland.windowManager.hyprland = {
         enable = true;
-	recommendedEnvironment = true;
-        extraConfig = ''
-          env = QT_QPA_PLATFORM, wayland;xcb
-	  env = SDL_VIDEODRIVER, wayland,x11
-	  env = CLUTTER_BACKEND, wayland
-	  env = _JAVA_AWT_NONPARENTING, 1
-	'' + cfg.extraConfig;
-      };
+        extraConfig =
+	  let
+	    init = "exec-once = ${builtins.toFile "hyprland_init.sh" config.custom.desktop.init}";
 
-      home.packages = with pkgs; [
-        libsForQt5.qt5.qtwayland
-	qt6.qtwayland
-      ];
+	    env = (strings.concatStringsSep "\n"
+	      (map (ident: "env = ${ident}, ${config.custom.desktop.env.${ident}}")
+	        (builtins.attrNames config.custom.desktop.env)));
+	  in ''
+            ${init}
+	    ${env}
+
+	    ${cfg.extraConfig}
+	  '';
+      };
     };
   }

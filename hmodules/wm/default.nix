@@ -1,2 +1,0 @@
-{ myLib, ... }:
-  { imports = myLib.getModules ./.; }

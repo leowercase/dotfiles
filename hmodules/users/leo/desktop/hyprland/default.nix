@@ -9,7 +9,7 @@
     };
 
     config = mkIf cfg.enable {
-      custom.wm.hyprland = {
+      custom.desktop.hyprland = {
         enable = true;
 	extraConfig = ''
           # See https://wiki.hyprland.org/ for information
