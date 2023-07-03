@@ -1,10 +1,10 @@
 { config, lib, pkgs, system, flake, ... }:
   with lib;
   let
-    cfg = config.leo.desktop.hyprland;
+    cfg = config.my.desktop.hyprland;
   in
   {
-    options.leo.desktop.hyprland = {
+    options.my.desktop.hyprland = {
       enable = mkEnableOption "my Hyprland";
     };
 
@@ -131,6 +131,6 @@
         enable = true;
       };
 
-      leo.fonts.enable = true;
+      my.fonts.enable = true;
     };
   }

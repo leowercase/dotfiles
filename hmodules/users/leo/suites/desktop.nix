@@ -1,15 +1,15 @@
 { config, lib, pkgs, ... }:
   with lib;
   let
-    cfg = config.leo.suites.desktop;
+    cfg = config.my.suites.desktop;
   in
   {
-    options.leo.suites.desktop = {
+    options.my.suites.desktop = {
       enable = mkEnableOption "the desktop suite";
     };
 
     config = mkIf cfg.enable {
-      leo = {
+      my = {
         programs = {
 	  qutebrowser.enable = true;
 	};

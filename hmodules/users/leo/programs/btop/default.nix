@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
   with lib;
   let
-    cfg = config.leo.programs.btop;
+    cfg = config.my.programs.btop;
   in
   {
-    options.leo.programs.btop = {
-      enable = mkEnableOption "my Neovim";
+    options.my.programs.btop = {
+      enable = mkEnableOption "my btop";
     };
 
     config = mkIf cfg.enable {

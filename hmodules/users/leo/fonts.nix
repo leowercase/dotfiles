@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
   with lib;
   let
-    cfg = config.leo.fonts;
+    cfg = config.my.fonts;
   in
   {
-    options.leo.fonts = {
+    options.my.fonts = {
       enable = mkEnableOption "my fonts";
     };
 

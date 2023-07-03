@@ -1,6 +1,6 @@
 { ... }:
   {
-    leo = {
+    my = {
       suites = {
         dev.enable = true;
 	desktop.enable = true;

@@ -1,10 +1,10 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.leo.programs.qutebrowser;
+    cfg = config.my.programs.qutebrowser;
   in
   {
-    options.leo.programs.qutebrowser = {
+    options.my.programs.qutebrowser = {
       enable = mkEnableOption "my qutebrowser";
     };
 

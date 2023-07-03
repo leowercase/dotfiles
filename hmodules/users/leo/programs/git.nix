@@ -1,10 +1,10 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.leo.programs.git;
+    cfg = config.my.programs.git;
   in
   {
-    options.leo.programs.git = {
+    options.my.programs.git = {
       enable = mkEnableOption "my Git";
     };
 
