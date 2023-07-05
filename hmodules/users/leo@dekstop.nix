@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
   {
     my = {
       suites = {
@@ -8,4 +8,5 @@
       };
       desktop.hyprland.enable = true;
     };
+    home.packages = [ pkgs.mindustry-wayland ];
   }
