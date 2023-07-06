@@ -19,5 +19,6 @@
        description = "Leo";
        extraGroups = [ "wheel" ];
      };
+     time.timeZone = "Europe/Helsinki";
      programs.hyprland.enable = true;
   }
