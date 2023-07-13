@@ -1,4 +1,4 @@
-{ config, lib, username, myLib, overlays, ... }:
+{ config, lib, username, myLib, overlays, pkgs, ... }:
   {
     imports = myLib.getModules ./.;
 
@@ -20,6 +20,7 @@
       overlays = [ overlays ];
     };
 
+    home.packages = [ pkgs.xdg-utils ];
     xdg = {
       enable = true;
       # Lowercase user directories by default

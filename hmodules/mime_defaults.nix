@@ -16,23 +16,25 @@
           urls = "opening URLs";
 	};
 
-    config =
-      {
-        xdg.mimeApps = {
+    config = {
+      xdg = {
+        mime.enable = true;
+        mimeApps = {
           enable = true;
-	  defaultApplications =
-	    foldl' mergeAttrs {}
-	      (attrValues (mapAttrs
-	        (name: mimeTypes: genAttrs mimeTypes (_: cfg.${name}))
-	        {
-		  text = [ "text/plain" ];
+          defaultApplications =
+            foldl' mergeAttrs {}
+              (attrValues (mapAttrs
+                (name: mimeTypes: genAttrs mimeTypes (_: cfg.${name}))
+                {
+        	  text = [ "text/plain" ];
                   urls = [
                     "x-scheme-handler/http"
                     "x-scheme-handler/https"
                     "x-scheme-handler/about"
                     "x-scheme-handler/unknown"
-	          ];
-	        }));
-	};
+                  ];
+                }));
+        };
       };
+    };
 }
