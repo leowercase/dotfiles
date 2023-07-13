@@ -20,8 +20,9 @@
 	discord
       ];
 
-      home.sessionVariables = {
-        BROWSER = "qutebrowser";
+      custom = {
+        defaultPrograms.browser = "qutebrowser";
+	mimeDefaults.urls = "org.qutebrowser.qutebrowser.desktop";
       };
     };
   }

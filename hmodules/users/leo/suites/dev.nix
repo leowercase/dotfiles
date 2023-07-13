@@ -17,9 +17,12 @@
 	};
       };
 
-      home.sessionVariables = {
-        EDITOR = "nvim";
-	VISUAL = "nvim";
+      custom = {
+        defaultPrograms = {
+          editor = "nvim";
+	  pager = "nvimpager";
+	};
+	mimeDefaults.text = "nvim.desktop";
       };
     };
   }
