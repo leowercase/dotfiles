@@ -11,7 +11,7 @@
     config = mkIf cfg.enable {
       custom.desktop.hyprland = {
         enable = true;
-	extraConfig = ''
+	extraConfig = with config.custom.defaultPrograms; ''
           # See https://wiki.hyprland.org/ for information
           
           env = XCURSOR_SIZE, 24
@@ -30,9 +30,9 @@
           }
 
           decoration {
-              rounding = 10
-              blur = true
-              blur_size = 3
+	      rounding = 10
+	      blur = true
+	      blur_size = 3
               blur_passes = 1
               blur_new_optimizations = true
 
@@ -75,8 +75,8 @@
 	  bind = $mainMod, F, fullscreen,
 	  bind = $mainMod SHIFT, F, fakefullscreen,
 
-          bind = $mainMod, Return, exec, kitty
-          bind = $mainMod, B, exec, qutebrowser
+          bind = $mainMod, Return, exec, ${terminal}
+          bind = $mainMod, B, exec, ${browser}
           bind = $mainMod, Slash, exec, rofi -show drun
 	  bind = $mainMod, S, exec, grimblast copy area
 	  bind = $mainMod SHIFT, S, exec, grimblast copy screen
