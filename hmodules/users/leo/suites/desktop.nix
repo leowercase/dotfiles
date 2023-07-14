@@ -12,6 +12,7 @@
       my = {
         programs = {
 	  qutebrowser.enable = true;
+	  kitty.enable = true;
 	};
       };
 
@@ -21,7 +22,10 @@
       ];
 
       custom = {
-        defaultPrograms.browser = "qutebrowser";
+        defaultPrograms = {
+	  browser = "qutebrowser";
+	  terminal = "kitty";
+	};
 	mimeDefaults.urls = "org.qutebrowser.qutebrowser.desktop";
       };
     };

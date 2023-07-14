@@ -121,7 +121,6 @@
       };
 
       home.packages = with pkgs; [
-	kitty
         rofi-wayland
         flake.hyprland-contrib.packages.${system}.grimblast
 	libsForQt5.polkit-kde-agent
