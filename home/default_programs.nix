@@ -10,7 +10,7 @@
   in
   {
     options.custom.defaultPrograms =
-      attrsets.mapAttrs
+      mapAttrs
         (_: desc: mkOption {
           type = types.str;
           default = "";

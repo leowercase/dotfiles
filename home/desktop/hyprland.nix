@@ -26,9 +26,9 @@
 	  let
 	    init = "exec-once = ${builtins.toFile "hyprland_init.sh" config.custom.desktop.init}";
 
-	    env = (strings.concatStringsSep "\n"
+	    env = (concatStringsSep "\n"
 	      (map (ident: "env = ${ident}, ${config.custom.desktop.env.${ident}}")
-	        (builtins.attrNames config.custom.desktop.env)));
+	        (attrNames config.custom.desktop.env)));
 	  in ''
             ${init}
 	    ${env}

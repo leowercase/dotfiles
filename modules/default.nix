@@ -17,6 +17,6 @@
     i18n.extraLocaleSettings.LC_TIME = mkDefault "en_DK.UTF-8";
 
     environment.defaultPackages = (with pkgs; [ nvi git ])
-      ++ (lists.remove pkgs.nano options.environment.defaultPackages.default);
+      ++ (remove pkgs.nano options.environment.defaultPackages.default);
     environment.variables.EDITOR = mkOverride 999 "vi";
   }

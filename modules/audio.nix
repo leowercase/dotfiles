@@ -32,7 +32,7 @@
         jack.enable = true;
       };
 
-      # PipeWire and PulseAudio both use RealtimeKit
+      # PulseAudio and PipeWire both use RealtimeKit
       security.rtkit.enable = (cfg == "pulseaudio") || (cfg == "pipewire");
     };
   }

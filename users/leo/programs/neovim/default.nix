@@ -12,8 +12,8 @@
 
     config = mkIf cfg.enable {
       home.packages = with pkgs; [ neovim ]
-        ++ (if cfg.pager then [ nvimpager ] else [])
-	++ (if cfg.gui then [ neovide ] else []);
+        ++ (optional (cfg.pager) nvimpager)
+	++ (optional (cfg.gui) neovide);
 
       xdg.configFile."nvim" = {
         source = ./.;

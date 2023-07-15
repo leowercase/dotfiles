@@ -25,7 +25,7 @@
           createDirectories = true;
         }
         //
-	(builtins.mapAttrs
+	(lib.mapAttrs
           (_: dir: lib.mkDefault "${config.home.homeDirectory}/${dir}")
 	  {
             desktop = "desktop";
