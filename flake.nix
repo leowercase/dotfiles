@@ -24,13 +24,7 @@
       myLib = import ./lib flake;
     in
     myLib.mkFlake ./. {
-      dekstop = {
-        system = "x86_64-linux";
-        hmUsers = [ "leo" ];
-      };
-      latpop = {
-        system = "x86_64-linux";
-        hmUsers = [ "leo" ];
-      };
+      dekstop = "x86_64-linux";
+      latpop = "x86_64-linux";
     };
 }

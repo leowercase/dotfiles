@@ -1,4 +1,4 @@
-{ options, lib, myLib, pkgs, hostname, overlays, ... }:
+{ options, lib, myLib, pkgs, hostname, ... }:
   with lib;
   {
     imports = myLib.getModules ./.;
@@ -10,11 +10,6 @@
     system.stateVersion = "23.05";
 
     networking.hostName = hostname;
-
-    nixpkgs = {
-      config.allowUnfree = true;
-      overlays = [ overlays ];
-    };
 
     hardware.enableRedistributableFirmware = mkDefault true;
 
