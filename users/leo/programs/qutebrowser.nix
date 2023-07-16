@@ -52,6 +52,11 @@
           "!hm" = "https://mipmip.github.io/home-manager-option-search/?query={}";
           "!flakes" = "https://search.nixos.org/flakes?query={}";
 
+	  # Git hosting platforms
+          "!gh" = "https://github.com/{}";
+          "!gl" = "https://gitlab.com/{}";
+          "!cb" = "https://codeberg.org/{}";
+
           # Media
           "!od" = "https://odysee.com/$/search?q={}";
           "!yt" = "https://youtube.com/results?search_query={}";
