@@ -8,5 +8,8 @@
       };
       desktop.hyprland.enable = true;
     };
-    home.packages = [ pkgs.mindustry-wayland ];
+    home.packages = with pkgs; [
+      mindustry-wayland
+      translate-shell
+    ];
   }
