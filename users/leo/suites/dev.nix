@@ -20,7 +20,7 @@
       custom = {
         defaultPrograms = {
           editor = "nvim";
-	  pager = "nvimpager";
+	  pager = "nvimpager -p";
 	};
 	mimeDefaults.text = "nvim.desktop";
       };
