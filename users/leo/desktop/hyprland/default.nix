@@ -11,7 +11,7 @@
     config = mkIf cfg.enable {
       custom.desktop.hyprland = {
         enable = true;
-	extraConfig = with config.custom.defaultPrograms; ''
+	extraConfig = with config.custom.defaults.programs; ''
           # See https://wiki.hyprland.org/ for information
           
           env = XCURSOR_SIZE, 24
@@ -129,7 +129,5 @@
       services.dunst = {
         enable = true;
       };
-
-      my.fonts.enable = true;
     };
   }

@@ -9,20 +9,18 @@
     };
 
     config = mkIf cfg.enable {
-      my = {
-        programs = {
-          neovim.enable = true;
-	  git.enable = true;
-	  btop.enable = true;
-	};
+      my.programs = {
+        neovim.enable = true;
+        git.enable = true;
+	btop.enable = true;
       };
 
-      custom = {
-        defaultPrograms = {
+      custom.defaults = {
+        programs = {
           editor = "nvim";
 	  pager = "nvimpager -p";
 	};
-	mimeDefaults.text = "nvim.desktop";
+	mimeApps.text = "nvim.desktop";
       };
     };
   }

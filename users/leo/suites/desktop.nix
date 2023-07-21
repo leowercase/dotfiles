@@ -17,16 +17,28 @@
       };
 
       home.packages = with pkgs; [
-        tutanota-desktop # Email provider
+        tutanota-desktop
 	discord
+
+        noto-fonts
+	noto-fonts-emoji
+	noto-fonts-cjk-sans
+	noto-fonts-cjk-serif
+	(nerdfonts.override { fonts = [ "FiraCode" ]; })
       ];
 
-      custom = {
-        defaultPrograms = {
+      custom.defaults = {
+        programs = {
 	  browser = "qutebrowser";
 	  terminal = "kitty";
 	};
-	mimeDefaults.urls = "org.qutebrowser.qutebrowser.desktop";
+	mimeApps.urls = "org.qutebrowser.qutebrowser.desktop";
+	fonts = {
+          serif = "Noto Serif";
+          sansSerif = "Noto Sans";
+          monospace = "FiraCode Nerd Font";
+          emoji = "Noto Color Emoji";
+	};
       };
     };
   }

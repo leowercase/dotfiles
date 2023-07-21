@@ -1,10 +1,10 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.mimeDefaults;
+    cfg = config.custom.defaults.mimeApps;
   in
   {
-    options.custom.mimeDefaults =
+    options.custom.defaults.mimeApps =
       mapAttrs
         (_: desc: mkOption {
           type = with types; coercedTo (either (listOf str) str) toList (listOf str);

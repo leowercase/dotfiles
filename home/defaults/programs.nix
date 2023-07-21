@@ -1,15 +1,13 @@
 # This module handles commands of default programs and sets
 # environment variables accordingly. Options defined here can be
-# used by other modules as well. The XDG MIME Applications specification
-# uses desktop entries instead of commands used to invoke default
-# programs, so they are handled separately by `custom.mimeDefaults`
+# used by other modules as well
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.defaultPrograms;
+    cfg = config.custom.defaults.programs;
   in
   {
-    options.custom.defaultPrograms =
+    options.custom.defaults.programs =
       mapAttrs
         (_: desc: mkOption {
           type = types.str;
