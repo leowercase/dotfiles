@@ -4,8 +4,6 @@
     cfg = config.custom.desktop.hyprland;
   in
   {
-    imports = [ flake.hyprland.homeManagerModules.default ];
-
     options.custom.desktop.hyprland = {
       enable = mkEnableOption "Hyprland";
       extraConfig = mkOption {
