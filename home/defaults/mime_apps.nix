@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, myLib, ... }:
   with lib;
   let
     cfg = config.custom.defaults.mimeApps;
@@ -7,7 +7,7 @@
     options.custom.defaults.mimeApps =
       mapAttrs
         (_: desc: mkOption {
-          type = with types; coercedTo (either (listOf str) str) toList (listOf str);
+          type = myLib.types.listOfOrSingleton types.str;
           default = [];
           description = "The XDG MIME desktop entry for ${desc}.";
         })

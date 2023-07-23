@@ -7,6 +7,10 @@
       with builtins;
       with nixpkgs.lib;
       rec {
+	types = with nixpkgs.lib.types; {
+          listOfOrSingleton = t: coercedTo (either (listOf t) t) toList (listOf t);
+	};
+
         # Both variants appear in my modules
         isNixFilePath = filePath:
           (pathIsRegularFile filePath) &&
