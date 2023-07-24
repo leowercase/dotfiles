@@ -22,14 +22,21 @@
         enable = true;
         extraConfig =
 	  let
-	    init = "exec-once = ${builtins.toFile "hyprland_init.sh" config.custom.desktop.init}";
+	    inherit (config.custom) desktop;
+
+	    init = "exec-once = ${builtins.toFile "hyprland_init.sh" desktop.init}";
 
 	    env = (concatStringsSep "\n"
-	      (map (ident: "env = ${ident}, ${config.custom.desktop.env.${ident}}")
+	      (map (ident: "env = ${ident}, ${desktop.env.${ident}}")
 	        (attrNames config.custom.desktop.env)));
+	    
+	    initialVolume = toString desktop.sound.initialVolume;
+	    initialMute = if desktop.sound.initialMute then "1" else "0";
 	  in ''
             ${init}
 	    ${env}
+	    exec-once = wpctl set-volume @DEFAULT_AUDIO_SINK@ ${initialVolume}
+	    exec-once = wpctl set-mute @DEFAULT_AUDIO_SINK@ ${initialMute}
 
 	    ${cfg.extraConfig}
 	  '';

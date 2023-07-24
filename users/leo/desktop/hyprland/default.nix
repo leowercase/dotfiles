@@ -16,9 +16,6 @@
           
           env = XCURSOR_SIZE, 24
 
-	  exec-once = wpctl set-volume @DEFAULT_AUDIO_SINK@ 20%
-	  exec-once = wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
-          
           general {
               gaps_in = 5
               gaps_out = 20
@@ -88,7 +85,7 @@
 
 	  binde = $mainMod, U, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
 	  bind = $mainMod, I, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-	  binde = $mainMod, O, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 2%+
+	  binde = $mainMod, O, exec, wpctl set-volume -l ${builtins.toString config.custom.desktop.sound.volumeLimit} @DEFAULT_AUDIO_SINK@ 2%+
           
           bind = $mainMod, 1, workspace, 1
           bind = $mainMod, 2, workspace, 2

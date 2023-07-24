@@ -20,6 +20,24 @@
       };
 
       waylandIntegration = mkEnableOption "Wayland integration";
+
+      sound = {
+	volumeLimit = mkOption {
+          type = types.float;
+	  default = 1.0;
+	  description = "The upper limit of volume.";
+	};
+        initialVolume = mkOption {
+          type = types.numbers.between 0 cfg.sound.volumeLimit;
+	  default = cfg.sound.volumeLimit / 3;
+	  description = "The initial volume percentage.";
+	};
+	initialMute = mkOption {
+          type = types.bool;
+	  default = false;
+	  description = "Whether to initially mute sound.";
+	};
+      };
     };
 
     # See https://wiki.archlinux.org/title/Wayland#GUI_libraries
