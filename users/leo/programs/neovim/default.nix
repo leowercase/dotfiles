@@ -14,11 +14,5 @@
       home.packages = with pkgs; [ neovim ]
         ++ (optional (cfg.pager) nvimpager)
 	++ (optional (cfg.gui) neovide);
-
-      xdg.configFile."nvim" = {
-        source = ./.;
-	recursive = true;
-      };
-      xdg.configFile."nvim/default.nix".enable = false;
     };
   }
