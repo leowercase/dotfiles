@@ -60,6 +60,7 @@
           # Media
           "!od" = "https://odysee.com/$/search?q={}";
           "!yt" = "https://youtube.com/results?search_query={}";
+          "!yt@" = "https://youtube.com/@{}";
           "!r" = "https://reddit.com/r/{}";
           "!rd" = "https://search.brave.com/search?q={} site%3Areddit.com";
         };
