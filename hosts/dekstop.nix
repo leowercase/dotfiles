@@ -14,6 +14,7 @@
        audio = "pipewire";
        admin = "leo";
      };
+     hardware.keyboard.zsa.enable = true;
      users.users.leo = {
        isNormalUser = true;
        description = "Leo";
