@@ -2,6 +2,7 @@ _: {
   overlays =
     let
       overlay = self: super: {
+        # See https://github.com/NixOS/nixpkgs/issues/162562#issuecomment-1523177264
         steam = super.steam.override {
           extraPkgs = pkgs: with pkgs; [
             xorg.libXcursor
