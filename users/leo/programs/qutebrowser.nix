@@ -39,6 +39,7 @@
         
         searchEngines = {
           DEFAULT = "https://search.brave.com/search?q={}";
+	  "!img" = "https://search.brave.com/images?q={}";
 
           # Distro wikis
           "!aw" = "https://wiki.archlinux.org/index.php?search={}";
