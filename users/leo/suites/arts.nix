@@ -11,6 +11,7 @@
     config = mkIf cfg.enable {
       home.packages = with pkgs; [
         krita
+	gimp
 	lmms
       ];
     };
