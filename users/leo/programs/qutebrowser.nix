@@ -57,6 +57,7 @@
           "!gh" = "https://github.com/{}";
           "!gl" = "https://gitlab.com/{}";
           "!cb" = "https://codeberg.org/{}";
+	  "!sr" = "https://sr.ht/~{}";
 
           # Media
           "!od" = "https://odysee.com/$/search?q={}";
