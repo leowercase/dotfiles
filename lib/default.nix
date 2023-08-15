@@ -1,5 +1,4 @@
 { nixpkgs,
-  nixpkgs-unstable,
   home-manager,
   ... } @ flake:
   let
@@ -76,7 +75,7 @@
                         (username: {
                           name = "${username}@${hostname}";
                           value = home-manager.lib.homeManagerConfiguration {
-                            pkgs = nixpkgs-unstable.legacyPackages.${system};
+                            pkgs = nixpkgs.legacyPackages.${system};
                             modules =
 			      [ nixpkgsConfig /${dir}/home ]
 			      ++ (moduleImport /${dir}/users username)
