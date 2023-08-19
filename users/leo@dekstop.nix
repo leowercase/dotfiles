@@ -12,6 +12,7 @@
     };
     home.packages = with pkgs; [
       mindustry-wayland
+      prismlauncher
       wally-cli
     ];
   }
