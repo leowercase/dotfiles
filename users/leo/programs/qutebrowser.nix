@@ -17,7 +17,10 @@
             autoplay = false;
             geolocation = false;
             headers.do_not_track = true;
+	    pdfjs = true;
           };
+	  # Come to the Dark Side, we have less eye strain
+	  colors.webpage.preferred_color_scheme = "dark";
           scrolling = {
             bar = "never";
             smooth = true;
