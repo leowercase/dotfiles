@@ -115,6 +115,7 @@
 
       home.packages = with pkgs; [
         rofi-wayland
+	wl-clipboard
         flake.hyprland-contrib.packages.${system}.grimblast
 	libsForQt5.polkit-kde-agent
       ];
