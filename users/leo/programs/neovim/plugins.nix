@@ -9,7 +9,7 @@ _: {
     nixGrammars = true;
     ensureInstalled = "all";
     nixvimInjections = true;
-    moduleConfig.highlight.enable = true;
+    indent = true;
   };
   plugins.treesitter-context.enable = true;
 
