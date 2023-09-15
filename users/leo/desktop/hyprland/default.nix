@@ -58,6 +58,7 @@
 	  misc {
 	      vrr = 1
               disable_splash_rendering = true
+              disable_hyprland_logo = true
 	  }
 
           $mainMod = SUPER
