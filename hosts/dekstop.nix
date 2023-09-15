@@ -22,6 +22,7 @@
      };
      time.timeZone = "Europe/Helsinki";
      programs.hyprland.enable = true;
+     security.pam.services.swaylock = {};
      programs.steam = {
        enable = true;
        remotePlay.openFirewall = true;
