@@ -134,6 +134,32 @@
         };
       };
 
+      services.swayidle = {
+        enable = true;
+        events = [
+          {
+            event = "before-sleep";
+            command = "${pkgs.systemd}/bin/loginctl lock-session";
+          }
+          {
+            event = "lock";
+            command = "${pkgs.swaylock-effects}/bin/swaylock";
+          }
+        ];
+        # Suspend after 5 minutes of idle time
+        timeouts =
+          let
+            suspendScript = pkgs.writeShellScript "suspend_script" ''
+              ${pkgs.pipewire}/bin/pw-cli info all | ${pkgs.ripgrep}/bin/rg running
+              if [ $? == 1 ]; then
+                ${pkgs.systemd}/bin/systemctl suspend
+              fi
+            '';
+          in [ { timeout = 300; command = suspendScript.outPath; } ];
+      };
+      systemd.user.services.swayidle.Install.WantedBy =
+        lib.mkForce [ "hyprland-session.target" ];
+
       services.dunst = {
         enable = true;
       };
