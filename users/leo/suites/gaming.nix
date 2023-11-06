@@ -1,16 +1,16 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
   with lib;
-  let
-    cfg = config.my.suites.gaming;
-  in
-  {
-    options.my.suites.gaming = {
-      enable = mkEnableOption "the gaming suite";
-    };
+  custom.mkSuite "gaming" [ "users'" "leo" "suites" "gaming" ] {
+    parts = [ "steam" "minecraft" ];
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [
-        gamescope
-      ];
+    config = cfg: {
+      programs.steam = mkIf cfg.steam {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+      };
+
+      hm.leo.home.packages =
+        optional (cfg.minecraft) pkgs.prismlauncher;
     };
   }

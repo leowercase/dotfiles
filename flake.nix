@@ -22,12 +22,24 @@
     };
   };
 
-  outputs = flake:
-    let
-      myLib = import ./lib flake;
-    in
-    myLib.mkFlake ./. {
-      dekstop = "x86_64-linux";
-      latpop = "x86_64-linux";
+  outputs = { nixpkgs, ... } @ flake:
+    with import ./lib nixpkgs.lib;
+    {
+      nixosConfigurations = custom.mkConfigurations {
+        inherit nixpkgs;
+        hosts = {
+          dekstop = {
+            system = "x86_64-linux";
+            modules = [ ./hosts/dekstop.nix ];
+          };
+          latpop = {
+            system = "x86_64-linux";
+            modules = [ ./hosts/latpop.nix ];
+          };
+        };
+        modules = [ ./system ./users ];
+        specialArgs = { inherit flake; };
+      };
     };
+    #{ customLib = import ./lib nixpkgs.lib; };
 }

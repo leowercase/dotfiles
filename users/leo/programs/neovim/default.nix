@@ -1,18 +1,18 @@
-{ config, lib, myLib, pkgs, flake, ... } @ args:
+{ flake, lib, pkgs, config, ... } @ args:
   with lib;
   let
-    cfg = config.my.programs.neovim;
+    cfg = config.users'.leo.programs.neovim;
   in
   {
-    imports = [ flake.nixvim.homeManagerModules.nixvim ];
-
-    options.my.programs.neovim = {
+    options.users'.leo.programs.neovim = {
       enable = mkEnableOption "my Neovim";
       pager = mkEnableOption "nvimpager" // { default = cfg.enable; };
       gui = mkEnableOption "Neovide" // { default = cfg.enable; };
     };
 
-    config = mkIf cfg.enable {
+    config.hm.leo = mkIf cfg.enable {
+      imports = [ flake.nixvim.homeManagerModules.nixvim ];
+
       programs.nixvim =
         let
           vimModules = map
@@ -22,8 +22,8 @@
         in
         mkMerge ([ { enable = true; } ] ++ vimModules);
 
-      home.packages = with pkgs;
-        (optional (cfg.pager) nvimpager)
-	++ (optional (cfg.gui) neovide);
+      home.packages =
+        (optional (cfg.pager) pkgs.nvimpager)
+	++ (optional (cfg.gui) pkgs.neovide);
     };
   }

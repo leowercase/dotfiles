@@ -15,12 +15,5 @@ _: {
 
   plugins.nix.enable = true;
 
-  plugins.indent-blankline = {
-    enable = true;
-    useTreesitter = true;
-    showCurrentContext = true;
-    showCurrentContextStart = true;
-  };
-
   plugins.lualine.enable = true;
 }

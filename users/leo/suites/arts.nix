@@ -1,18 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
   with lib;
-  let
-    cfg = config.my.suites.arts;
-  in
-  {
-    options.my.suites.arts = {
-      enable = mkEnableOption "the art suite";
-    };
+  custom.mkSuite "arts" [ "users'" "leo" "suites" "arts" ] {
+    parts = [ "krita" "lmms" ];
 
-    config = mkIf cfg.enable {
-      home.packages = with pkgs; [
-        krita
-	gimp
-	lmms
-      ];
+    config = cfg: {
+      hm.leo.home.packages = with pkgs;
+        (optional (cfg.krita) krita)
+        ++ (optional (cfg.lmms) lmms);
     };
   }

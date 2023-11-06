@@ -1,26 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
   with lib;
-  let
-    cfg = config.my.suites.dev;
-  in
-  {
-    options.my.suites.dev = {
-      enable = mkEnableOption "the development suite";
-    };
+  custom.mkSuite "development" [ "users'" "leo" "suites" "dev" ] {
+    parts = [ "neovim" "git" ];
 
-    config = mkIf cfg.enable {
-      my.programs = {
-        neovim.enable = true;
-        git.enable = true;
-	btop.enable = true;
-      };
-
-      custom.defaults = {
-        programs = {
-          editor = "nvim";
-	  pager = "nvimpager -p";
-	};
-	mimeApps.text = "nvim.desktop";
+    config = cfg: {
+      users'.leo.programs = {
+        neovim.enable = cfg.neovim;
+        git.enable = cfg.git;
       };
     };
   }

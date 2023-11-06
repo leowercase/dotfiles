@@ -1,14 +1,14 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, ... }:
   with lib;
   let
-    cfg = config.my.programs.btop;
+    cfg = config.users'.leo.programs.btop;
   in
   {
-    options.my.programs.btop = {
+    options.users'.leo.programs.btop = {
       enable = mkEnableOption "my btop";
     };
 
-    config = mkIf cfg.enable {
+    config.hm.leo = mkIf cfg.enable {
       programs.btop = {
         enable = true;
 	settings.vim_keys = true;

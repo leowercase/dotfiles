@@ -1,14 +1,14 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.my.programs.kitty;
+    cfg = config.users'.leo.programs.kitty;
   in
   {
-    options.my.programs.kitty = {
+    options.users'.leo.programs.kitty = {
       enable = mkEnableOption "my kitty";
     };
 
-    config = mkIf cfg.enable {
+    config.hm.leo = mkIf cfg.enable {
       # Meow
       programs.kitty = {
         enable = true;

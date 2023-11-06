@@ -1,14 +1,14 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.my.programs.git;
+    cfg = config.users'.leo.programs.git;
   in
   {
-    options.my.programs.git = {
+    options.users'.leo.programs.git = {
       enable = mkEnableOption "my Git";
     };
 
-    config = mkIf cfg.enable {
+    config.hm.leo = mkIf cfg.enable {
       programs.git = {
         enable = true;
         userName = "leowercase";

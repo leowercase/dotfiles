@@ -1,13 +1,30 @@
-{ myLib, ... }:
+{ lib, config, ... }:
+  with lib;
   {
-    imports = myLib.getModules ./.;
+    imports = lib.custom.getModules'' ./.;
 
-    # My shell
-    programs.bash = {
-      enable = true;
-      enableCompletion = true;
+    options.users'.leo.enable = mkEnableOption "Leo";
+
+    config = mkIf config.users'.leo.enable {
+      users.users.leo = {
+        description = "Leo";
+        isNormalUser = true;
+        extraGroups = [ "wheel" ];
+      };
+
+      users'.leo = {
+        programs.default = {
+          shell = "bash";
+          editor = "nvim";
+          pager = "nvimpager -p";
+          browser = "qutebrowser";
+          terminal = "kitty";
+        };
+
+        xdg.defaultApps = {
+          text = "nvim.desktop";
+          urls = "org.qutebrowser.qutebrowser.desktop";
+        };
+      };
     };
-
-    # Editor alias, because I'm lazy
-    home.shellAliases.e = "$EDITOR";
   }
