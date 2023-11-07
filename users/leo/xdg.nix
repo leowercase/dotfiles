@@ -5,7 +5,7 @@
   in
   {
     options.users'.leo.xdg = {
-      enable = mkEnableOption "XDG";
+      enable = mkEnableOption "XDG" // { default = true; };
       lowercaseUserDirs = mkEnableOption "lowercase XDG user dirs" // { default = true; };
       defaultApps = 
         mapAttrs
@@ -21,8 +21,7 @@
     };
 
     config.hm.leo = mkIf cfg.enable (args:
-      let hmConfig = args.config;
-      in {
+      {
         xdg = {
           enable = true;
           mime.enable = true;
@@ -36,7 +35,7 @@
           }
           (mkIf cfg.lowercaseUserDirs
             (mapAttrs
-              (_: dir: "${hmConfig.home.homeDirectory}/${dir}")
+              (_: dir: "${args.config.home.homeDirectory}/${dir}")
               {
                 desktop = "desktop";
                 documents = "documents";
@@ -54,7 +53,7 @@
           defaultApplications =
             attrsets.mergeAttrsList
               (attrValues (mapAttrs
-                (name: mimeTypes: genAttrs (_: cfg.defaultApps.${name}))
+                (name: mimeTypes: genAttrs mimeTypes (_: cfg.defaultApps.${name}))
                 {
         	  text = singleton "text/plain";
                   urls = [

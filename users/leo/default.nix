@@ -21,6 +21,7 @@
           terminal = "kitty";
         };
 
+        xdg.enable = true;
         xdg.defaultApps = {
           text = "nvim.desktop";
           urls = "org.qutebrowser.qutebrowser.desktop";
