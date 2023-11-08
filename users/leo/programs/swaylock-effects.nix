@@ -13,8 +13,8 @@
       };
     };
 
-    config.hm.leo = mkIf cfg.enable {
-      programs.swaylock = {
+    config = mkIf cfg.enable {
+      hm.leo.programs.swaylock = {
         enable = true;
         package = pkgs.swaylock-effects;
         settings =
@@ -28,5 +28,6 @@
             };
           in defaultSettings // cfg.settings;
       };
+      security.pam.services.swaylock = {};
     };
   }
