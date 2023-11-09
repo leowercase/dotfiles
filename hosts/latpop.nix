@@ -16,12 +16,13 @@
       admin = "leo";
     };
      
-    custom.users.leo = {
+    users'.leo = {
       enable = true;
       rices.hyprland.enable = true;
       suites = {
         dev.enable = true;
         basicApps.enable = true;
+        arts.enable = true;
       };
     };
   }
