@@ -15,5 +15,7 @@ _: {
 
   plugins.nix.enable = true;
 
+  plugins.indent-blankline.enable = true;
+
   plugins.lualine.enable = true;
 }
