@@ -47,6 +47,8 @@
 
           # Wikis
           "!w" = "https://en.wikipedia.org/w/index.php?title=Special:Search&search={}";
+          "!aw" = "https://wiki.archlinux.org/index.php?search={}";
+          "!now" = "https://nixos.wiki/index.php?search={}";
 
 	  # Dictionaries
 	  "!ubd" = "https://www.urbandictionary.com/define.php?term={}";
@@ -57,12 +59,7 @@
           "!opts" = "https://search.nixos.org/options?query={}";
           "!hm" = "https://mipmip.github.io/home-manager-option-search/?query={}";
           "!flakes" = "https://flakestry.dev/?q={}";
-
-          # Distro wikis
-          "!aw" = "https://wiki.archlinux.org/index.php?search={}";
-          "!now" = "https://nixos.wiki/index.php?search={}";
-          "!gw" = "https://wiki.gentoo.org/index.php?search={}";
-          "!vhb" = "https://docs.voidlinux.org/?search={}";
+          "!nixvim" = "https://nix-community.github.io/nixvim/?search={}";
 
 	  # Git hosting platforms
           "!gh" = "https://github.com/{}";
