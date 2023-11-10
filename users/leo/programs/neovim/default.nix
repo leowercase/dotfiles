@@ -11,16 +11,9 @@
     };
 
     config.hm.leo = mkIf cfg.enable {
-      imports = [ flake.nixvim.homeManagerModules.nixvim ];
+      imports = [ flake.nixvim.homeManagerModules.nixvim ] ++ (custom.getModules'' ./.);
 
-      programs.nixvim =
-        let
-          vimModules = map
-            (f: import f args)
-            (remove ./default.nix
-              (filesystem.listFilesRecursive ./.));
-        in
-        mkMerge ([ { enable = true; } ] ++ vimModules);
+      programs.nixvim.enable = true;
 
       home.packages =
         (optional (cfg.pager) pkgs.nvimpager)
