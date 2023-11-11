@@ -41,5 +41,4 @@
         specialArgs = { inherit flake; };
       };
     };
-    #{ customLib = import ./lib nixpkgs.lib; };
 }
