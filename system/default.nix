@@ -7,20 +7,9 @@
   {
     imports = custom.getModules'' ./.;
 
-    # Enable flakes
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
     system = { inherit stateVersion; };
     home-manager.sharedModules = singleton {
       home = { inherit stateVersion; };
-    };
-
-    # Absolutely proprietary
-    nixpkgs.config.allowUnfree = true;
-
-    home-manager = {
-      useGlobalPkgs = true;
-      useUserPackages = true;
     };
 
     hardware.enableRedistributableFirmware = mkDefault true;
