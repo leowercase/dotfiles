@@ -23,7 +23,6 @@ _: {
       mapping = {
         "<C-d>" = "cmp.mapping.scroll_docs(-4)";
         "<C-f>" = "cmp.mapping.scroll_docs(4)";
-        "<CR>" = "cmp.mapping.confirm { select = true }";
         "<Tab>" = {
           modes = [ "i" "s" ];
           action = "cmp.mapping.select_next_item()";
@@ -55,7 +54,11 @@ _: {
 
     nvim-autopairs.enable = true;
 
-    indent-blankline.enable = true;
+    indent-blankline = {
+      enable = true;
+      scope.showEnd = false;
+    };
+
     lualine.enable = true;
   };
 }
