@@ -60,10 +60,6 @@
     bind = $mainMod, K, cyclenext, prev
     bind = $mainMod SHIFT, K, swapnext, prev
 
-    binde = $mainMod, U, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
-    bind = $mainMod, I, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-    binde = $mainMod, O, exec, wpctl set-volume -l ${builtins.toString config.users'.leo.desktop.sound.volumeLimit} @DEFAULT_AUDIO_SINK@ 2%+
-    
     bind = $mainMod, 1, workspace, 1
     bind = $mainMod, 2, workspace, 2
     bind = $mainMod, 3, workspace, 3
@@ -86,6 +82,14 @@
     bind = $mainMod SHIFT, 9, movetoworkspace, 9
     bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
+    bind = $mainMod, G, togglegroup
+    bind = $mainMod, H, changegroupactive, b
+    bind = $mainMod, L, changegroupactive, f
+
+    binde = $mainMod, U, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+    bind = $mainMod, I, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    binde = $mainMod, O, exec, wpctl set-volume -l ${builtins.toString config.users'.leo.desktop.sound.volumeLimit} @DEFAULT_AUDIO_SINK@ 2%+
+    
     bind = $mainMod, mouse_down, workspace, e+1
     bind = $mainMod, mouse_up, workspace, e-1
 
