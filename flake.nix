@@ -30,14 +30,14 @@
         hosts = {
           dekstop = {
             system = "x86_64-linux";
-            modules = [ ./hosts/dekstop.nix ];
+            modules = [ ./modules/hosts/dekstop.nix ];
           };
           latpop = {
             system = "x86_64-linux";
-            modules = [ ./hosts/latpop.nix ];
+            modules = [ ./modules/hosts/latpop.nix ];
           };
         };
-        modules = [ ./system ./users ];
+        modules = [ ./modules/system ./modules/users ];
         specialArgs = { inherit flake; };
       };
     };
