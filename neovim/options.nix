@@ -1,5 +1,5 @@
 _: {
-  programs.nixvim = {
+  config = {
     luaLoader.enable = true;
 
     clipboard.register = "unnamedplus";
