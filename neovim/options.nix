@@ -14,5 +14,7 @@ _: {
       shiftwidth = 4;
       tabstop = 4;
     };
+
+    colorschemes.ayu.enable = true;
   };
 }
