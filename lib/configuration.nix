@@ -2,6 +2,21 @@ lib:
   with builtins;
   with lib;
   {
+    mkFlake = systems: args: flakeParts:
+      let
+        flakeParts' = flatten (map
+          (part: map
+            (system:
+              let
+                part' = custom.innerImport part;
+                args' = args // { inherit system; };
+              in
+              if isFunction part' then part' args' else part')
+            systems)
+          flakeParts);
+      in
+      custom.recursiveMergeAttrsList flakeParts';
+
     mkConfigurations = { nixpkgs, hosts, modules, specialArgs ? {} } @ common:
       mapAttrs
         (hostname: { system, modules ? [] }:

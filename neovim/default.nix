@@ -1,11 +1,27 @@
-lib: flake: system:
+{ system, flake, lib } @ args:
   let
-    nixvim = flake.nixvim.legacyPackages.${system};
-    nixvimLib = flake.nixvim.lib.${system};
-    pkgs = import flake.nixpkgs { inherit system; };
+    mkNvim = import ./mk_nvim.nix args;
   in
-  nixvim.makeNixvimWithModule {
-    inherit pkgs;
-    module.imports = [ ./options.nix ./plugins.nix ];
-    extraSpecialArgs = { inherit flake lib system nixvim nixvimLib; };
+  {
+    inherit mkNvim;
+
+    packages.${system} = {
+      nvim = mkNvim { inherit system; };
+      nvim-minimal = mkNvim { inherit system; features = []; };
+    };
+
+    checks.${system}.nvim =
+      flake.nixvim.lib.${system}.check.mkTestDerivationFromNvim
+        { inherit (flake.self.packages.${system}) nvim; };
+
+    apps.${system} = {
+      nvim = {
+        type = "app";
+        program = "${flake.self.packages.${system}.nvim}/bin/nvim";
+      };
+      nvim-minimal = {
+        type = "app";
+        program = "${flake.self.packages.${system}.nvim-minimal}/bin/nvim";
+      };
+    };
   }

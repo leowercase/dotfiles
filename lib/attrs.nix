@@ -10,4 +10,6 @@ lib:
 
     anyAttrs = pred: attrs:
       any ({ name, value }: pred name value) (attrsToList attrs);
+
+    recursiveMergeAttrsList = foldl recursiveUpdate {};
   }
