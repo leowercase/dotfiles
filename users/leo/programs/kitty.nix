@@ -8,11 +8,13 @@
       enable = mkEnableOption "my kitty";
     };
 
-    config.hm.leo = mkIf cfg.enable {
+    config = mkIf cfg.enable {
       # Meow
-      programs.kitty = {
+      hm.leo.programs.kitty = {
         enable = true;
         shellIntegration.enableBashIntegration = true;
       };
+
+      users'.leo.desktop.swallow.swallowables = [ "kitty" ];
     };
   }
