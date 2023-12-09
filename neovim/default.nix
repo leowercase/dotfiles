@@ -7,21 +7,18 @@
 
     packages.${system} = {
       nvim = mkNvim { inherit system; };
-      nvim-minimal = mkNvim { inherit system; features = []; };
     };
 
     checks.${system}.nvim =
-      flake.nixvim.lib.${system}.check.mkTestDerivationFromNvim
-        { inherit (flake.self.packages.${system}) nvim; };
+      flake.nixvim.lib.${system}.check.mkTestDerivationFromNvim {
+        nvim = mkNvim { inherit system; gui = false; };
+        name = "My NixVim configuration";
+      };
 
     apps.${system} = {
       nvim = {
         type = "app";
         program = "${flake.self.packages.${system}.nvim}/bin/nvim";
-      };
-      nvim-minimal = {
-        type = "app";
-        program = "${flake.self.packages.${system}.nvim-minimal}/bin/nvim";
       };
     };
   }
