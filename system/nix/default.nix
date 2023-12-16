@@ -1,4 +1,4 @@
-{ flake, ... }:
+{ inputs, ... }:
   {
     # Enable flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -18,7 +18,7 @@
           id = "nixpkgs";
           type = "indirect";
         };
-        flake = flake.nixpkgs;
+        flake = inputs.nixpkgs;
       };
 
       dotfiles = {
@@ -26,7 +26,7 @@
           id = "dotfiles";
           type = "indirect";
         };
-        flake = flake.self;
+        flake = inputs.self;
       };
     };
 

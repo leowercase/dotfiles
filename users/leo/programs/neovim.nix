@@ -1,4 +1,4 @@
-{ flake, system, lib, pkgs, config, ... } @ args:
+{ inputs, system, lib, pkgs, config, ... } @ args:
   with lib;
   let
     cfg = config.users'.leo.programs.neovim;
@@ -10,6 +10,6 @@
     };
 
     config.hm.leo.home.packages =
-      (optional cfg.enable flake.self.packages.${system}.nvim)
+      (optional cfg.enable inputs.self.packages.${system}.nvim)
       ++ (optional cfg.pager pkgs.nvimpager);
   }

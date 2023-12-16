@@ -1,6 +1,6 @@
-{ flake, lib, ... }: {
-  nixosConfigurations = lib.custom.mkConfigurations {
-    inherit (flake) nixpkgs;
+{ inputs, custom, ... }: {
+  flake.nixosConfigurations = custom.mkConfigurations {
+    inherit (inputs) nixpkgs;
     hosts = {
       dekstop = {
         system = "x86_64-linux";
@@ -12,6 +12,6 @@
       };
     };
     modules = [ ./system ./users ];
-    specialArgs = { inherit flake; };
+    specialArgs = { inherit inputs; };
   };
 }

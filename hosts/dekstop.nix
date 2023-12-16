@@ -1,6 +1,6 @@
-{ flake, ... }:
+{ inputs, ... }:
   {
-    imports = with flake.nixos-hardware.nixosModules;
+    imports = with inputs.nixos-hardware.nixosModules;
       [ common-pc common-cpu-intel common-gpu-amd common-pc-ssd ];
 
     boot.initrd.availableKernelModules = [ "vmd" "xhci_pci" "ahci" "usbhid" "sd_mod" ];

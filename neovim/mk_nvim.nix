@@ -1,4 +1,4 @@
-{ flake, lib, ... } @ args:
+{ inputs, lib, ... } @ args:
 {
   system,
   gui ? true,
@@ -7,9 +7,9 @@
 }:
   with lib;
   let
-    nixvim = flake.nixvim.legacyPackages.${system};
-    nixvimLib = flake.nixvim.lib.${system};
-    pkgs = import flake.nixpkgs { inherit system; };
+    nixvim = inputs.nixvim.legacyPackages.${system};
+    nixvimLib = inputs.nixvim.lib.${system};
+    pkgs = import inputs.nixpkgs { inherit system; };
 
     nvim = nixvim.makeNixvimWithModule {
       inherit pkgs;

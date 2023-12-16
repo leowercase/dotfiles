@@ -1,7 +1,7 @@
-{ flake, lib, config, options, ... }:
+{ inputs, lib, config, options, ... }:
   with lib;
   {
-    imports = [ flake.home-manager.nixosModules.home-manager ];
+    imports = [ inputs.home-manager.nixosModules.home-manager ];
 
     # Shorter to write, is all
     options.hm = mkOption {

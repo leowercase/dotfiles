@@ -1,5 +1,7 @@
-lib:
+{ inputs, ... }:
   let
+    inherit (inputs.nixpkgs) lib;
+
     custom =
       with builtins;
       with lib;
@@ -9,4 +11,11 @@ lib:
 
     lib' = lib.extend (_: _: { inherit custom; });
   in
-  lib'
+  {
+    flake = {
+      lib = custom;
+      inherit (lib');
+    };
+
+    _module.args = { inherit custom; };
+  }

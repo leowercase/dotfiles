@@ -1,4 +1,4 @@
-{ flake, lib, config, pkgs, system, ... } @ args:
+{ inputs, lib, config, pkgs, system, ... } @ args:
   with lib;
   let
     cfg = config.users'.leo.rices.hyprland;
@@ -19,7 +19,7 @@
 	libsForQt5.polkit-kde-agent
 
         rofi-wayland
-        flake.hyprland-contrib.packages.${system}.grimblast
+        inputs.hyprland-contrib.packages.${system}.grimblast
 
         noto-fonts
 	noto-fonts-emoji

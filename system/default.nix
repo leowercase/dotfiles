@@ -1,4 +1,4 @@
-{ flake, options, lib, pkgs, hostname, ... }:
+{ inputs, options, lib, pkgs, hostname, ... }:
   with lib;
   let
     # See https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion

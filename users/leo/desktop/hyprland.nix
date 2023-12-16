@@ -1,4 +1,4 @@
-{ flake, lib, config, pkgs, ... }:
+{ lib, config, pkgs, ... }:
   with lib;
   let
     cfg = config.users'.leo.desktop.hyprland;
