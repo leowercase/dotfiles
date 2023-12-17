@@ -1,22 +1,20 @@
-{ inputs, lib, ... } @ args:
+{ inputs', lib, pkgs, ... } @ args:
 {
-  system,
   gui ? true,
   neovideArgs ? "--nofork",
   module ? {}
 }:
   with lib;
   let
-    nixvim = inputs.nixvim.legacyPackages.${system};
-    nixvimLib = inputs.nixvim.lib.${system};
-    pkgs = import inputs.nixpkgs { inherit system; };
+    nixvim = inputs'.nixvim.legacyPackages;
+    nixvimLib = inputs'.nixvim.lib;
 
     nvim = nixvim.makeNixvimWithModule {
       inherit pkgs;
       module = {
         imports = [ ./options.nix ./plugins.nix module ];
       };
-      extraSpecialArgs = args // { inherit system nixvim nixvimLib; };
+      extraSpecialArgs = args // { inherit nixvim nixvimLib; };
     };
 
     nvimBin = "${nvim}/bin/nvim";

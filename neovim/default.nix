@@ -1,22 +1,23 @@
-args:
-  let
-    mkNvim = import ./mk_nvim.nix args;
-  in
+_:
   {
-    flake = { inherit mkNvim; };
+    perSystem = { inputs', self', pkgs, ... } @ args:
+      let
+        mkNvim = import ./mk_nvim.nix args;
+      in
+      {
+        lib = { inherit mkNvim; };
 
-    perSystem = { system, inputs', self', ... }: {
-      packages.nvim = mkNvim { inherit system; };
+        packages.nvim = mkNvim {};
 
-      apps.nvim = {
-        type = "app";
-        program = "${self'.packages.nvim}/bin/nvim";
-      };
-
-      checks.nvim =
-        inputs'.nixvim.lib.check.mkTestDerivationFromNvim {
-          nvim = mkNvim { inherit system; gui = false; };
-          name = "My NixVim configuration";
+        apps.nvim = {
+          type = "app";
+          program = "${self'.packages.nvim}/bin/nvim";
         };
-    };
+
+        checks.nvim =
+          inputs'.nixvim.lib.check.mkTestDerivationFromNvim {
+            nvim = mkNvim { gui = false; };
+            name = "My NixVim configuration";
+          };
+      };
   }

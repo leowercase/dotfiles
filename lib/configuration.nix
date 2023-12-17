@@ -1,4 +1,4 @@
-lib:
+lib: _:
   with builtins;
   with lib;
   {
