@@ -27,4 +27,15 @@
         arts.enable = true;
       };
     };
+
+    # I only have this on one machine, so it'll be fine...
+    virtualisation.libvirtd.enable = true;
+    programs.virt-manager.enable = true;
+    hm.leo.dconf.settings = {
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
+    };
+    users.users.leo.extraGroups = [ "libvirtd" ];
   }
