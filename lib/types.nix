@@ -1,4 +1,4 @@
-lib: _:
+{ lib, ... }:
   with lib;
   with types;
   {

@@ -1,6 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, customLib, pkgs, ... }:
   with lib;
-  custom.mkSuite "basic apps" [ "users'" "leo" "suites" "basicApps" ] {
+  customLib.mkSuite "basic apps" [ "users'" "leo" "suites" "basicApps" ] {
     parts = [ "qutebrowser" "kitty" "btop" "tutanota" "discord" ];
 
     config = cfg: {

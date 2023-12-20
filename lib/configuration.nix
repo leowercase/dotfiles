@@ -1,15 +1,15 @@
-lib: _:
+{ inputs, lib, customLib, ... }:
   with builtins;
   with lib;
   {
-    mkConfigurations = { nixpkgs, hosts, modules, specialArgs ? {} } @ common:
+    mkConfigurations = { hosts, modules, specialArgs ? {} } @ common:
       mapAttrs
         (hostname: { system, modules ? [] }:
-          nixpkgs.lib.nixosSystem {
+          inputs.nixpkgs.lib.nixosSystem {
             inherit system;
             modules = common.modules ++ modules
-              ++ [ { networking.hostName = lib.mkDefault hostname; } ];
-            specialArgs = { inherit system hostname lib; } // specialArgs;
+              ++ [ { networking.hostName = mkDefault hostname; } ];
+            specialArgs = { inherit system inputs hostname lib customLib; } // specialArgs;
           })
         hosts;
 

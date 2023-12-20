@@ -1,6 +1,6 @@
-{ lib, pkgs, ... }:
+{ lib, customLib, pkgs, ... }:
   with lib;
-  custom.mkSuite "gaming" [ "users'" "leo" "suites" "gaming" ] {
+  customLib.mkSuite "gaming" [ "users'" "leo" "suites" "gaming" ] {
     parts = [ "steam" "minecraft" ];
 
     config = cfg: {

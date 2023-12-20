@@ -1,63 +1,37 @@
-{ inputs, lib, ... } @ args:
+{ inputs, lib, customLib, ... } @ args:
   with lib;
   let
+    # The lib being an option allows other modules to extend it
     option = mkOption {
-      type = with types; attrsOf anything;
+      type = with types; lazyAttrsOf anything;
       description = "This custom library contains helper functions.";
     };
-
-    pkgsOption = mkOption {
-      type = with types; uniq (attrsOf anything);
-      description = "A custom library (`custom`) wrapped inside the Nixpkgs lib.";
-    };
-
-    wrapWithNixpkgsLib = custom: lib.extend (_: _: { inherit custom; });
   in
   {
-    options = {
-      lib = option;
-      nixpkgsLib = pkgsOption;
-    };
-
-    imports =
-      let
-        inherit (inputs.flake-parts.lib) mkTransposedPerSystemModule;
-
-        libModule = mkTransposedPerSystemModule {
+    # Per-system lib
+    imports = singleton
+      (inputs.flake-parts.lib
+        .mkTransposedPerSystemModule {
           name = "lib";
           inherit option;
           file = ./default.nix;
-        };
-        
-        nixpkgsLibModule = mkTransposedPerSystemModule {
-          name = "nixpkgsLib";
-          option = pkgsOption;
-          file = ./default.nix;
-        };
-      in
-      [ libModule nixpkgsLibModule ];
+        });
+
+    # "Systemless" lib
+    options.lib' = option;
 
     config = {
-      flake = rec {
-        lib' =
-          let
-            subLibs = [ ./attrs.nix ./types.nix ./filesystem.nix ./configuration.nix ];
+      # The base lib, which is given as an argument to the flake modules
+      _module.args.customLib = 
+        let
+          subLibs = [ ./attrs.nix ./types.nix ./filesystem.nix ./configuration.nix ];
 
-            importLib = file: import file nixpkgsLib' args;
-          in
-          attrsets.mergeAttrsList (map importLib subLibs);
+          importLib = file: import file args;
+        in
+        attrsets.mergeAttrsList (map importLib subLibs);
 
-        nixpkgsLib' = wrapWithNixpkgsLib lib';
-      };
+      perSystem = _: { lib = customLib; };
 
-      _module.args = { inherit (inputs.self.nixpkgsLib') custom; };
-
-      perSystem = { config, ... }: rec {
-        lib = inputs.self.lib';
-
-        nixpkgsLib = wrapWithNixpkgsLib lib;
-
-        _module.args = { inherit (config.nixpkgsLib) custom; };
-      };
+      flake.lib' = customLib;
     };
   }

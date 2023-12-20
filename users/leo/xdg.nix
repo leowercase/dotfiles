@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, customLib, pkgs, config, ... }:
   with lib;
   let
     cfg = config.users'.leo.xdg;
@@ -10,7 +10,7 @@
       defaultApps = 
         mapAttrs
           (_: desc: mkOption {
-            type = custom.types.listOfOrSingleton types.str;
+            type = customLib.types.listOfOrSingleton types.str;
             default = [];
             description = "The XDG MIME desktop entry for ${desc}.";
           })

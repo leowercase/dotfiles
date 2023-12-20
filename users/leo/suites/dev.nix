@@ -1,6 +1,6 @@
-{ config, lib, ... }:
+{ config, lib, customLib, ... }:
   with lib;
-  custom.mkSuite "development" [ "users'" "leo" "suites" "dev" ] {
+  customLib.mkSuite "development" [ "users'" "leo" "suites" "dev" ] {
     parts = [ "neovim" "git" ];
 
     config = cfg: {

@@ -1,1 +1,1 @@
-{ lib, ... }: { imports = lib.custom.getModules'' ./.; }
+{ lib, customLib, ... }: { imports = customLib.getModules'' ./.; }

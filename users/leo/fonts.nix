@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, customLib, ... }:
   with lib;
   let
     cfg = config.users'.leo.fonts;
@@ -7,7 +7,7 @@
     options.users'.leo.fonts = {
       enable = mkEnableOption "font configuration" // { default = true; };
       aliases = mkOption {
-        type = with types; attrsOf (custom.types.listOfOrSingleton str);
+        type = with types; attrsOf (customLib.types.listOfOrSingleton str);
         default = {};
         description = "Alias the specified fonts with other fonts.";
       };

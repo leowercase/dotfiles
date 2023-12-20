@@ -1,10 +1,10 @@
-{ config, options, lib, pkgs, ... }:
+{ config, options, lib, customLib, pkgs, ... }:
   with lib;
   let
     cfg = config.users'.leo.desktop;
   in
   {
-    imports = custom.getModules'' ./.;
+    imports = customLib.getModules'' ./.;
     
     options.users'.leo.desktop = {
       init = mkOption {

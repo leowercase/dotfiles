@@ -1,13 +1,13 @@
 # This module handles commands of default programs and sets
 # environment variables accordingly. Options defined here are
 # used by other modules as well
-{ config, lib, ... }:
+{ config, lib, customLib, ... }:
   with lib;
   let
     cfg = config.users'.leo.programs.default;
   in
   {
-    imports = custom.getModules'' ./.;
+    imports = customLib.getModules'' ./.;
 
     options.users'.leo.programs.default =
       mapAttrs

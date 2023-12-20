@@ -1,11 +1,11 @@
-{ inputs, options, lib, pkgs, hostname, ... }:
+{ inputs, options, lib, customLib, pkgs, hostname, ... }:
   with lib;
   let
     # See https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "23.05";
   in
   {
-    imports = custom.getModules'' ./.;
+    imports = customLib.getModules'' ./.;
 
     system = { inherit stateVersion; };
     home-manager.sharedModules = singleton {

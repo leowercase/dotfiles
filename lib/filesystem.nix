@@ -1,4 +1,4 @@
-lib: _:
+{ lib, customLib, ... }:
   with builtins;
   with lib;
   {
@@ -22,24 +22,24 @@ lib: _:
     readDirNames = dir: attrNames (readDir dir);
 
     readDirPaths = dir:
-      map (filename: /${dir}/${filename}) (custom.readDirNames dir);
+      map (filename: /${dir}/${filename}) (customLib.readDirNames dir);
 
     importDir = dir:
       mapAttrs
         (filename: _:
           let filePath = /${dir}/${filename};
-          in (if custom.isImportable filePath
+          in (if customLib.isImportable filePath
               then import filePath else readFile filePath))
         (readDir dir);
 
     getModules = dir:
-      filter custom.isImportable (custom.readDirPaths dir);
+      filter customLib.isImportable (customLib.readDirPaths dir);
 
     # If the file that the modules are imported from is in
     # the same directory, *infinite recursion* ensues
     getModules' = dir: fromFile:
-      remove fromFile (custom.getModules dir);
+      remove fromFile (customLib.getModules dir);
 
     # Often the file that declares imports is default.nix
-    getModules'' = dir: custom.getModules' dir /${dir}/default.nix;
+    getModules'' = dir: customLib.getModules' dir /${dir}/default.nix;
   }

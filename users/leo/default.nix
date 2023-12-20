@@ -1,7 +1,7 @@
-{ lib, config, ... }:
+{ lib, customLib, config, ... }:
   with lib;
   {
-    imports = lib.custom.getModules'' ./.;
+    imports = customLib.getModules'' ./.;
 
     options.users'.leo.enable = mkEnableOption "Leo";
 
