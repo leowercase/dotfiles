@@ -17,7 +17,7 @@
       users'.leo.desktop.waylandIntegration = mkDefault true;
 
       programs.hyprland.enable = true;
-      custom.audio = "pipewire";
+      system'.audio = "pipewire";
 
       hm.leo.wayland.windowManager.hyprland = {
         enable = true;

@@ -1,12 +1,12 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.booting;
+    cfg = config.system'.booting;
   in
   {
     # I usually do the same partitioning for all installations
     
-    options.custom.booting = {
+    options.system'.booting = {
       enable = mkEnableOption "UEFI booting" // { default = true; };
       enableSwap = mkEnableOption "swap";
     };

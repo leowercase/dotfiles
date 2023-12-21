@@ -7,7 +7,7 @@
     boot.kernelModules = [ "kvm-intel" ];
     time.timeZone = "Europe/Helsinki";
 
-    custom = {
+    system' = {
       booting.enableSwap = true;
       networking = {
         enable = true;

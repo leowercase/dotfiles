@@ -1,10 +1,10 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.admin;
+    cfg = config.system'.admin;
   in
   {
-    options.custom.admin = mkOption {
+    options.system'.admin = mkOption {
       type = types.str;
       default = "root";
       description =

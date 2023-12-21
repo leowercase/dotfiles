@@ -1,10 +1,10 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.networking;
+    cfg = config.system'.networking;
   in
   {
-    options.custom.networking = {
+    options.system'.networking = {
       enable = mkEnableOption "networking with NetworkManager";
       wifi = mkOption {
         type = with types; nullOr (enum [ "iwd" "wpa_supplicant" ]);

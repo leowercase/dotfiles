@@ -1,10 +1,10 @@
 { config, lib, ... }:
   with lib;
   let
-    cfg = config.custom.audio;
+    cfg = config.system'.audio;
   in
   {
-    options.custom.audio = mkOption {
+    options.system'.audio = mkOption {
       type = with types; nullOr (enum [ "alsa" "pulseaudio" "pipewire" ]);
       default = null;
       description =
