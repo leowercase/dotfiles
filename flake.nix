@@ -29,5 +29,7 @@
       systems = [ "x86_64-linux" ];
 
       imports = [ ./lib ./configs.nix ./neovim ];
+
+      debug = true;
     };
 }
