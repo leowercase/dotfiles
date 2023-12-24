@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
   {
     imports = with inputs.nixos-hardware.nixosModules;
       [ common-pc-laptop common-pc-laptop-acpi_call common-cpu-intel common-pc-laptop-ssd ];
@@ -19,10 +19,16 @@
     users'.leo = {
       enable = true;
       rices.hyprland.enable = true;
-      suites = {
-        dev.enable = true;
-        basicApps.enable = true;
-        arts.enable = true;
+      programs = {
+        neovim.enable = true;
+        git.enable = true;
+        qutebrowser.enable = true;
+        kitty.enable = true;
+        btop.enable = true;
       };
     };
+
+    hm.leo.home.packages = with pkgs; [
+      godot_4
+    ];
   }

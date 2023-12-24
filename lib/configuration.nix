@@ -2,17 +2,6 @@
   with builtins;
   with lib;
   {
-    mkConfigurations = { hosts, modules, specialArgs ? {} } @ common:
-      mapAttrs
-        (hostname: { system, modules ? [] }:
-          inputs.nixpkgs.lib.nixosSystem {
-            inherit system;
-            modules = common.modules ++ modules
-              ++ [ { networking.hostName = mkDefault hostname; } ];
-            specialArgs = { inherit system inputs hostname lib customLib; } // specialArgs;
-          })
-        hosts;
-
     mkSuite = name: modulePath: { parts, config }: {
       imports = singleton (args:
         with args.lib;

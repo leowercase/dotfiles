@@ -1,4 +1,4 @@
-{ inputs, system, lib, pkgs, config, ... } @ args:
+{ self', lib, pkgs, config, ... } @ args:
   with lib;
   let
     cfg = config.users'.leo.programs.neovim;
@@ -10,6 +10,6 @@
     };
 
     config.hm.leo.home.packages =
-      (optional cfg.enable inputs.self.packages.${system}.nvim)
+      (optional cfg.enable self'.packages.nvim)
       ++ (optional cfg.pager pkgs.nvimpager);
   }

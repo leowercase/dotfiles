@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
   {
     imports = with inputs.nixos-hardware.nixosModules;
       [ common-pc common-cpu-intel common-gpu-amd common-pc-ssd ];
@@ -20,12 +20,28 @@
     users'.leo = {
       enable = true;
       rices.hyprland.enable = true;
-      suites = {
-        dev.enable = true;
-        basicApps.enable = true;
-        gaming.enable = true;
-        arts.enable = true;
+      programs = {
+        neovim.enable = true;
+        git.enable = true;
+        qutebrowser.enable = true;
+        kitty.enable = true;
+        btop.enable = true;
       };
+    };
+
+    hm.leo.home.packages = with pkgs; [
+      tutanota-desktop
+      discord
+      prismlauncher
+      krita
+      lmms
+      godot_4
+    ];
+
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
     };
 
     # I only have this on one machine, so it'll be fine...

@@ -28,7 +28,10 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
 
-      imports = [ ./lib ./configs.nix ./neovim ];
+      imports = [
+        ./lib ./configs.nix
+        ./hosts ./neovim
+      ];
 
       debug = true;
     };
