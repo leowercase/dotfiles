@@ -1,4 +1,4 @@
-{ config, lib, customLib, ... }:
+{ config, lib, customLib, pkgs, ... }:
   with lib;
   let
     cfg = config.users'.leo.fonts;
@@ -14,30 +14,32 @@
       useCoreFontCompatible = mkEnableOption "open source replacements for Microsoft core fonts";
     };
 
-    config.hm.leo = mkMerge [
+    config = mkMerge [
       (mkIf cfg.enable {
-        fonts.fontconfig.enable = true;
+        hm.leo = {
+          fonts.fontconfig.enable = true;
 
-        xdg.configFile."fontconfig/fonts.conf".text =
-          let
-            mkFamily = name: "<family>${name}</family>";
+          xdg.configFile."fontconfig/fonts.conf".text =
+            let
+              mkFamily = name: "<family>${name}</family>";
 
-            mkAlias = family: aliases: ''
-              <alias binding="same">
-              ${mkFamily family}
-              <prefer>${concatStrings (map mkFamily aliases)}</prefer>
-              </alias>
+              mkAlias = family: aliases: ''
+                <alias binding="same">
+                ${mkFamily family}
+                <prefer>${concatStrings (map mkFamily aliases)}</prefer>
+                </alias>
+              '';
+
+              aliases = concatStringsSep "\n" (attrValues (mapAttrs mkAlias cfg.aliases));
+            in
+            ''
+              <?xml version="1.0"?>
+              <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+              <fontconfig>
+              ${aliases}
+              </fontconfig>
             '';
-
-            aliases = concatStringsSep "\n" (attrValues (mapAttrs mkAlias cfg.aliases));
-          in
-          ''
-            <?xml version="1.0"?>
-            <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
-            <fontconfig>
-            ${aliases}
-            </fontconfig>
-          '';
+        };
       })
 
       # See
