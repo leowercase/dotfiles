@@ -20,6 +20,7 @@
     users'.leo = {
       enable = true;
       rices.hyprland.enable = true;
+      fonts.useCoreFontCompatible = true;
       programs = {
         neovim.enable = true;
         git.enable = true;
