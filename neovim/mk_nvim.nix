@@ -1,4 +1,4 @@
-{ inputs', lib, pkgs, ... } @ args:
+{ inputs', self', lib, pkgs, ... } @ args:
 {
   gui ? true,
   neovideArgs ? "--nofork",
@@ -14,7 +14,10 @@
       module = {
         imports = [ ./options.nix ./plugins.nix module ];
       };
-      extraSpecialArgs = args // { inherit nixvim nixvimLib; };
+      extraSpecialArgs = args // {
+        inherit nixvim nixvimLib;
+        customLib = self'.lib;
+      };
     };
 
     nvimBin = "${nvim}/bin/nvim";
