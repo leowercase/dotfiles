@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, system, ... } @ args:
+{ inputs', lib, config, pkgs, ... } @ args:
   with lib;
   let
     cfg = config.users'.leo.rices.hyprland;
@@ -15,17 +15,17 @@
       };
 
       hm.leo.home.packages = with pkgs; [
-	wl-clipboard
-	libsForQt5.polkit-kde-agent
+        wl-clipboard
+        libsForQt5.polkit-kde-agent
 
         rofi-wayland
-        inputs.hyprland-contrib.packages.${system}.grimblast
+        inputs'.hyprland-contrib.packages.grimblast
 
         noto-fonts
-	noto-fonts-emoji
-	noto-fonts-cjk-sans
-	noto-fonts-cjk-serif
-	(nerdfonts.override { fonts = [ "FiraCode" ]; })
+        noto-fonts-emoji
+        noto-fonts-cjk-sans
+        noto-fonts-cjk-serif
+        (nerdfonts.override { fonts = [ "FiraCode" ]; })
       ];
 
       users'.leo.fonts.aliases = {
