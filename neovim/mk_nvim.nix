@@ -1,7 +1,7 @@
 { inputs', self', lib, pkgs, ... } @ args:
 {
   gui ? true,
-  neovideArgs ? "--nofork",
+  neovideArgs ? "--no-fork",
   module ? {}
 }:
   with lib;
