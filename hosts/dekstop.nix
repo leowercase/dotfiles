@@ -19,7 +19,7 @@
 
     users'.leo = {
       enable = true;
-      rices.hyprland.enable = true;
+      desktop.hyprland.enable = true;
       fonts.useCoreFontCompatible = true;
       programs = {
         neovim.enable = true;

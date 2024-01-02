@@ -14,7 +14,5 @@
         enable = true;
         shellIntegration.enableBashIntegration = true;
       };
-
-      users'.leo.desktop.swallow.swallowables = [ "kitty" ];
     };
   }

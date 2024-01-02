@@ -18,7 +18,7 @@
      
     users'.leo = {
       enable = true;
-      rices.hyprland.enable = true;
+      desktop.hyprland.enable = true;
       programs = {
         neovim.enable = true;
         git.enable = true;
