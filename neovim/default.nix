@@ -1,7 +1,18 @@
 _: {
   perSystem = { inputs', self', pkgs, ... } @ args:
     let
-      mkNvim = import ./mk_nvim.nix args;
+      nixvim = inputs'.nixvim.legacyPackages;
+      nixvimLib = inputs'.nixvim.lib;
+
+      mkNvim = { module ? {}, specialArgs ? {} }:
+        nixvim.makeNixvimWithModule {
+          inherit pkgs;
+          module.imports = [ ./options.nix ./plugins.nix module ];
+          extraSpecialArgs =
+            args
+            // { inherit nixvim nixvimLib; customLib = self'.lib; }
+            // specialArgs;
+        };
     in
     {
       lib = { inherit mkNvim; };
@@ -13,10 +24,9 @@ _: {
         program = "${self'.packages.nvim}/bin/nvim";
       };
 
-      checks.nvim =
-        inputs'.nixvim.lib.check.mkTestDerivationFromNvim {
-          nvim = mkNvim { gui = false; };
-          name = "My NixVim configuration";
-        };
+      checks.nvim = nixvimLib.check.mkTestDerivationFromNvim {
+        inherit (self'.packages) nvim;
+        name = "My NixVim configuration";
+      };
     };
 }
