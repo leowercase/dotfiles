@@ -1,6 +1,6 @@
 { lib, config, ... }:
   {
-    config.hm.leo = lib.mkIf config.users'.leo.enable {
+    config.home-manager.users.leo = lib.mkIf config.users'.leo.enable {
       # My shell
       programs.bash = {
         enable = true;

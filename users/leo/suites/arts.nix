@@ -4,7 +4,7 @@
     parts = [ "krita" "lmms" "godot" ];
 
     config = cfg: {
-      hm.leo.home.packages = with pkgs;
+      home-manager.users.leo.home.packages = with pkgs;
         (optional (cfg.krita) krita)
         ++ (optional (cfg.lmms) lmms)
         ++ (optional (cfg.godot) godot_4);

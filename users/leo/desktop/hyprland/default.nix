@@ -13,7 +13,7 @@
 
       system'.audio = "pipewire";
 
-      hm.leo.wayland.windowManager.hyprland = {
+      home-manager.users.leo.wayland.windowManager.hyprland = {
         enable = true;
 
         settings = mkMerge [
@@ -22,7 +22,7 @@
         ];
       };
 
-      hm.leo.home.packages = with pkgs; [
+      home-manager.users.leo.home.packages = with pkgs; [
         wl-clipboard
         libsForQt5.polkit-kde-agent
 
@@ -56,7 +56,7 @@
         };
       };
 
-      hm.leo.services.dunst = {
+      home-manager.users.leo.services.dunst = {
         enable = true;
       };
     };

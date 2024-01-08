@@ -16,7 +16,7 @@
 
     config = mkMerge [
       (mkIf cfg.enable {
-        hm.leo = {
+        home-manager.users.leo = {
           fonts.fontconfig.enable = true;
 
           xdg.configFile."fontconfig/fonts.conf".text =
@@ -54,7 +54,7 @@
           "Georgia" = "Gelasio";
         };
 
-        hm.leo.home.packages = with pkgs; [
+        home-manager.users.leo.home.packages = with pkgs; [
           liberation_ttf
           comic-relief
           gelasio

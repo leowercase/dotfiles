@@ -10,7 +10,7 @@
         btop.enable = cfg.btop;
       };
 
-      hm.leo.home.packages = with pkgs;
+      home-manager.users.leo.home.packages = with pkgs;
         (optional (cfg.tutanota) tutanota-desktop)
         ++ (optional (cfg.discord) discord);
     };

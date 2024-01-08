@@ -8,10 +8,10 @@
       enable = mkEnableOption "my btop";
     };
 
-    config.hm.leo = mkIf cfg.enable {
+    config.home-manager.users.leo = mkIf cfg.enable {
       programs.btop = {
         enable = true;
-	settings.vim_keys = true;
+        settings.vim_keys = true;
       };
     };
   }

@@ -25,7 +25,7 @@
 	};
 
     # See https://wiki.archlinux.org/title/Environment_variables#Default_programs
-    config.hm.leo.home.sessionVariables =
+    config.home-manager.users.leo.home.sessionVariables =
       attrsets.mergeAttrsList
         (attrValues (mapAttrs
           (name: envs:

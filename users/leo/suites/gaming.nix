@@ -10,7 +10,7 @@
         dedicatedServer.openFirewall = true;
       };
 
-      hm.leo.home.packages =
+      home-manager.users.leo.home.packages =
         optional (cfg.minecraft) pkgs.prismlauncher;
     };
   }

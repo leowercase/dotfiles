@@ -20,7 +20,7 @@
           };
     };
 
-    config.hm.leo = mkIf cfg.enable (args:
+    config.home-manager.users.leo = mkIf cfg.enable (args:
       {
         xdg = {
           enable = true;

@@ -8,7 +8,7 @@
       enable = mkEnableOption "my qutebrowser";
     };
 
-    config.hm.leo = mkIf cfg.enable {
+    config.home-manager.users.leo = mkIf cfg.enable {
       programs.qutebrowser = {
         enable = true;
 
@@ -17,10 +17,10 @@
             autoplay = false;
             geolocation = false;
             headers.do_not_track = true;
-	    pdfjs = true;
+            pdfjs = true;
           };
-	  # Come to the Dark Side, we have less eye strain
-	  colors.webpage.preferred_color_scheme = "dark";
+          # Come to the Dark Side, we have less eye strain
+          colors.webpage.preferred_color_scheme = "dark";
           scrolling = {
             bar = "never";
             smooth = true;
@@ -41,17 +41,17 @@
         };
         
         searchEngines = {
-	  # Search engines
+          # Search engines
           DEFAULT = "https://search.brave.com/search?q={}";
-	  "!img" = "https://search.brave.com/images?q={}";
+          "!img" = "https://search.brave.com/images?q={}";
 
           # Wikis
           "!w" = "https://en.wikipedia.org/w/index.php?title=Special:Search&search={}";
           "!aw" = "https://wiki.archlinux.org/index.php?search={}";
           "!now" = "https://nixos.wiki/index.php?search={}";
 
-	  # Dictionaries
-	  "!ubd" = "https://www.urbandictionary.com/define.php?term={}";
+          # Dictionaries
+          "!ubd" = "https://www.urbandictionary.com/define.php?term={}";
 
           # Nix search engines
           "!ng" = "https://noogle.dev/?term=%22{}%22";
@@ -61,11 +61,11 @@
           "!flakes" = "https://flakestry.dev/?q={}";
           "!nixvim" = "https://nix-community.github.io/nixvim/?search={}";
 
-	  # Git hosting platforms
+          # Git hosting platforms
           "!gh" = "https://github.com/{}";
           "!gl" = "https://gitlab.com/{}";
           "!cb" = "https://codeberg.org/{}";
-	  "!sr" = "https://sr.ht/~{}";
+          "!sr" = "https://sr.ht/~{}";
 
           # Media
           "!yt" = "https://youtube.com/results?search_query={}";

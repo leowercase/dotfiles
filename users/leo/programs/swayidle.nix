@@ -17,7 +17,7 @@
       };
     };
 
-    config.hm.leo.services.swayidle = mkIf cfg.enable {
+    config.home-manager.users.leo.services.swayidle = mkIf cfg.enable {
       enable = true;
       events = [
         {

@@ -14,7 +14,7 @@
     };
 
     config = mkIf cfg.enable {
-      hm.leo.programs.swaylock = {
+      home-manager.users.leo.programs.swaylock = {
         enable = true;
         package = pkgs.swaylock-effects;
         settings =

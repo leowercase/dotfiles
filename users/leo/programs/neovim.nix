@@ -9,7 +9,7 @@
       pager = mkEnableOption "nvimpager" // { default = cfg.enable; };
     };
 
-    config.hm.leo.home.packages =
+    config.home-manager.users.leo.home.packages =
       (optional cfg.enable self'.packages.nvim)
       ++ (optional cfg.pager pkgs.nvimpager);
   }

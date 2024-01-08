@@ -8,7 +8,7 @@
       enable = mkEnableOption "my Git";
     };
 
-    config.hm.leo = mkIf cfg.enable {
+    config.home-manager.users.leo = mkIf cfg.enable {
       programs.git = {
         enable = true;
         userName = "leowercase";

@@ -10,7 +10,7 @@
 
     config = mkIf cfg.enable {
       # Meow
-      hm.leo.programs.kitty = {
+      home-manager.users.leo.programs.kitty = {
         enable = true;
         shellIntegration.enableBashIntegration = true;
       };

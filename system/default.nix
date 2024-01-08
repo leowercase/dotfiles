@@ -5,7 +5,8 @@
     stateVersion = "23.11";
   in
   {
-    imports = customLib.getModules'' ./.;
+    imports = (customLib.getModules'' ./.)
+      ++ [ inputs.home-manager.nixosModules.home-manager ];
 
     system = { inherit stateVersion; };
     home-manager.sharedModules = singleton {
