@@ -20,10 +20,14 @@
         home-manager.users.leo.wayland.windowManager.hyprland = {
           enable = true;
 
+          plugins = [ inputs'.hyprland-plugins.packages.hyprbars ];
+
           settings = mkMerge [
             (import ./settings.nix args)
             (import ./binds.nix args)
           ];
+
+          extraConfig = import ./config.nix args;
         };
 
         home-manager.users.leo.home.packages = with pkgs; [
