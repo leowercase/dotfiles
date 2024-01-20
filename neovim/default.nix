@@ -1,5 +1,5 @@
-_: {
-  perSystem = { inputs', self', pkgs, ... } @ args:
+{ inputs, ... }: {
+  perSystem = { inputs', self', pkgs, ... }:
     let
       nixvim = inputs'.nixvim.legacyPackages;
       nixvimLib = inputs'.nixvim.lib;
@@ -8,10 +8,10 @@ _: {
         nixvim.makeNixvimWithModule {
           inherit pkgs;
           module.imports = [ ./options.nix ./plugins.nix module ];
-          extraSpecialArgs =
-            args
-            // { inherit nixvim nixvimLib; customLib = self'.lib; }
-            // specialArgs;
+          extraSpecialArgs = {
+            inherit inputs inputs' self';
+            customLib = self'.lib;
+          } // specialArgs;
         };
     in
     {
