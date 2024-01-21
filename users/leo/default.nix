@@ -14,7 +14,7 @@
 
       users'.leo = {
         programs.default = {
-          shell = "bash";
+          shell = "/run/current-system/sw/bin/bash";
           editor = "nvim";
           pager = "nvimpager -p";
           browser = "qutebrowser";
