@@ -31,7 +31,6 @@
 
       home-manager.users.leo.home.packages = with pkgs; [
         wl-clipboard
-        libsForQt5.polkit-kde-agent
 
         rofi-wayland
         inputs'.hyprland-contrib.packages.grimblast

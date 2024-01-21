@@ -1,7 +1,10 @@
-_:
+{ pkgs, ... }:
   # See https://wiki.hyprland.org/ for information
   {
-    exec-once = [ "wpctl set-volume @DEFAULT_AUDIO_SINK@ 25%" ];
+    exec-once = [
+      "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
+      "wpctl set-volume @DEFAULT_AUDIO_SINK@ 25%"
+    ];
 
     general = {
       layout = "master";
