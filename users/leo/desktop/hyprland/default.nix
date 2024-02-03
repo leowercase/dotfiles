@@ -11,7 +11,10 @@
     };
 
     config = mkIf cfg.enable {
-      home-manager.users.leo.imports = [ inputs.hyprland.homeManagerModules.default ];
+      home-manager.users.leo.imports = [
+        inputs.hyprland.homeManagerModules.default
+        inputs.ags.homeManagerModules.default
+      ];
 
       programs.hyprland.enable = true;
       system'.audio = "pipewire";
@@ -60,6 +63,11 @@
           enable = true;
           screenLocker = "${pkgs.swaylock-effects}/bin/swaylock";
         };
+      };
+
+      home-manager.users.leo.programs.ags = {
+        enable = true;
+        configDir = ./ags;
       };
 
       home-manager.users.leo.services.dunst = {
