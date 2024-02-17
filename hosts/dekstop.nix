@@ -37,6 +37,7 @@
       krita
       lmms
       godot_4
+      translate-shell
     ];
 
     programs.steam = {
