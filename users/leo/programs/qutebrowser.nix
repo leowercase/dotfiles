@@ -26,7 +26,7 @@
             smooth = true;
           };
           url = rec {
-            default_page = "qute://start";
+            default_page = "https://search.brave.com/";
             start_pages = default_page;
             open_base_url = true;
           };
