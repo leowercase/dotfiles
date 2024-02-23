@@ -28,7 +28,7 @@
       };
     };
 
-    hm.leo.home.packages = with pkgs; [
+    home-manager.leo.home.packages = with pkgs; [
       godot_4
     ];
   }

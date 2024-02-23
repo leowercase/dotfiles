@@ -30,7 +30,7 @@
       };
     };
 
-    hm.leo.home.packages = with pkgs; [
+    home-manager.users.leo.home.packages = with pkgs; [
       tutanota-desktop
       discord
       prismlauncher
