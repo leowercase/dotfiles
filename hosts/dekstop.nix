@@ -25,6 +25,7 @@
         neovim.enable = true;
         git.enable = true;
         qutebrowser.enable = true;
+        firefox.enable = true;
         kitty.enable = true;
         btop.enable = true;
       };

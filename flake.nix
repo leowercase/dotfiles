@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nur.url = "github:nix-community/nur";
+
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     nixos-hardware.url = "github:nixos/nixos-hardware";
@@ -31,6 +33,8 @@
     };
 
     ags.url = "github:aylur/ags";
+
+    arkenfox-nixos.url = "github:dwarfmaster/arkenfox-nixos";
   };
 
   outputs = { flake-parts, ... } @ inputs:

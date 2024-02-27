@@ -1,5 +1,8 @@
 { inputs, ... }:
   {
+    # The Nix User Repository
+    imports = [ inputs.nur.nixosModules.nur ];
+
     # Enable flakes
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
