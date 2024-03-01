@@ -25,10 +25,14 @@
 
           settings = {
             "browser.shell.checkDefaultBrowser" = false;
+            "browser.aboutConfig.showWarning" = false;
 
             # Allows using addons on addons.mozilla.org
             "extensions.webextensions.restrictedDomains" = "";
             "privacy.resistFingerprinting.block_mozAddonManager" = true;
+
+            # Doesn't disable any extensions after first install
+            "extensions.autoDisableScopes" = 0;
           };
 
           extensions = with firefox-addons; [
