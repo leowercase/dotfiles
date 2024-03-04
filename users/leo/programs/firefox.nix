@@ -85,6 +85,10 @@
       xdg.configFile."tridactyl/tridactylrc".text = ''
         bind J tabnext
         bind K tabprev
+
+        set hintuppercase false
+
+        set smoothscroll true
       '';
     };
   }
