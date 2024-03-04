@@ -1,16 +1,13 @@
-# Some dotfiles
-This is my Nix flake for my personal machine configurations.
-It uses NixOS, with Home Manager as a module.
-
-## My Neovim configuration
-I use NixVim to configure my Neovim. It's a bit rough around the edges and still very much a WIP,
-but you can try it out by running:
-```
-nix run github:leowercase/dotfiles#nvim
-```
+# My Nix dotfiles
+This is my dotfiles repo, using
+* [Nix](https://nixos.org) with [flakes](https://nix.dev/concepts/flakes.html)
+* [flake-parts](https://flake.parts)
+* [NixOS](https://nixos.org)
+* [Home Manager](https://github.com/nix-community/home-manager) as a NixOS module
+* [NixVim](https://github.com/nix-community/nixvim) for managing Neovim
 
 ## References
-These configurations have helped me in one way or another on my Nix journey.
+These configurations have helped me in one way or another on my journey:
 * https://github.com/wiltaylor/dotfiles
 * https://github.com/hlissner/dotfiles
 * https://github.com/fufexan/dotfiles
