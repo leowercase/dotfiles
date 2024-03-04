@@ -17,14 +17,14 @@
           shell = "/run/current-system/sw/bin/bash";
           editor = "nvim";
           pager = "nvimpager -p";
-          browser = "qutebrowser";
+          browser = "firefox";
           terminal = "kitty";
         };
 
         xdg.enable = true;
         xdg.defaultApps = {
           text = "nvim.desktop";
-          urls = "org.qutebrowser.qutebrowser.desktop";
+          urls = "firefox.desktop";
         };
       };
     };
