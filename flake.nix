@@ -2,13 +2,13 @@
   description = "My dotfiles flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    nur.url = "github:nix-community/nur";
+    nur.url = "github:nix-community/NUR";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/hyprland";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-contrib = {
       url = "github:hyprwm/contrib";
@@ -32,7 +32,7 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    ags.url = "github:aylur/ags";
+    ags.url = "github:Aylur/ags";
 
     arkenfox-nixos.url = "github:dwarfmaster/arkenfox-nixos";
   };
