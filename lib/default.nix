@@ -24,7 +24,7 @@
       # The base lib, which is given as an argument to the flake modules
       _module.args.customLib = 
         let
-          subLibs = [ ./attrs.nix ./types.nix ./filesystem.nix ./configuration.nix ];
+          subLibs = [ ./attrs.nix ./types.nix ./filesystem.nix ];
 
           importLib = file: import file args;
         in
