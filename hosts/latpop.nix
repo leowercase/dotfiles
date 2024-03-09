@@ -19,6 +19,7 @@
     users'.leo = {
       enable = true;
       desktop.hyprland.enable = true;
+      wallpaper = "${inputs.wallpapers}/starry_night_sky_illustration.png";
       programs = {
         neovim.enable = true;
         git.enable = true;

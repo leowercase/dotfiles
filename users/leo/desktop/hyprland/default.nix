@@ -38,6 +38,8 @@
         rofi-wayland
         inputs'.hyprland-contrib.packages.grimblast
 
+        swww
+
         noto-fonts
         noto-fonts-emoji
         noto-fonts-cjk-sans

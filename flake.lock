@@ -684,7 +684,8 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_5",
         "nixvim": "nixvim",
-        "nur": "nur"
+        "nur": "nur",
+        "wallpapers": "wallpapers"
       }
     },
     "systems": {
@@ -759,6 +760,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709220201,
+        "narHash": "sha256-JN49NUmyFaxvtaBf1BCQjrJXD6vGV90KcVFqzTSlWTA=",
+        "owner": "leowercase",
+        "repo": "wallpapers",
+        "rev": "66a9a263cdb11cf13ea50cb16e811dc1376947f2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leowercase",
+        "repo": "wallpapers",
         "type": "github"
       }
     },

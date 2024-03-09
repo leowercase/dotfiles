@@ -21,6 +21,7 @@
       enable = true;
       desktop.hyprland.enable = true;
       fonts.useCoreFontCompatible = true;
+      wallpaper = "${inputs.wallpapers}/vaporwave_jungle_leaves.png";
       programs = {
         neovim.enable = true;
         git.enable = true;

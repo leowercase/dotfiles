@@ -1,9 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
   # See https://wiki.hyprland.org/ for information
   {
     exec-once = [
       "${pkgs.libsForQt5.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
       "wpctl set-volume @DEFAULT_AUDIO_SINK@ 25%"
+      "swww init"
+      "swww img ${config.users'.leo.wallpaper}"
     ];
 
     general = {
